@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://www.francescolavella.it/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.francescolavella.it/" rel="alternate" type="text/html" /><updated>2020-02-15T16:17:09+01:00</updated><id>https://www.francescolavella.it/feed.xml</id><title type="html">francesco la vella</title><subtitle>su di me e altre storie</subtitle><entry><title type="html">Nuovo anno Nuovo server</title><link href="https://www.francescolavella.it/nuovo-server/" rel="alternate" type="text/html" title="Nuovo anno Nuovo server" /><published>2020-02-15T00:00:00+01:00</published><updated>2020-02-15T00:00:00+01:00</updated><id>https://www.francescolavella.it/nuovo-server</id><content type="html" xml:base="https://www.francescolavella.it/nuovo-server/">&lt;h1 id=&quot;nuovo-anno-nuovo-server&quot;&gt;&lt;strong&gt;Nuovo Anno Nuovo Server&lt;/strong&gt;&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://www.francescolavella.it/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.francescolavella.it/" rel="alternate" type="text/html" /><updated>2020-02-17T09:43:53+01:00</updated><id>https://www.francescolavella.it/feed.xml</id><title type="html">francesco la vella</title><subtitle>su di me e altre storie</subtitle><entry><title type="html">Nuovo anno Nuovo server</title><link href="https://www.francescolavella.it/nuovo-server/" rel="alternate" type="text/html" title="Nuovo anno Nuovo server" /><published>2020-02-15T00:00:00+01:00</published><updated>2020-02-15T00:00:00+01:00</updated><id>https://www.francescolavella.it/nuovo-server</id><content type="html" xml:base="https://www.francescolavella.it/nuovo-server/">&lt;h1 id=&quot;nuovo-anno-nuovo-server&quot;&gt;&lt;strong&gt;Nuovo Anno Nuovo Server&lt;/strong&gt;&lt;/h1&gt;
 
 &lt;p&gt;E’ passato veramente tanto tempo dall’ultimo post pubblicato, un pò a causa di impegni professionali, un pò perchè questo sito in jekyll hostato su github aveva qualche problema.&lt;/p&gt;
 
@@ -9,6 +9,19 @@
 &lt;p&gt;E visto che la cosa mi è piaciuta, abbiamo deciso di rinnovare anche il sito &lt;a href=&quot;https://www.sintab.it&quot;&gt;www.sintab.it&lt;/a&gt; con jekyll - Presto online&lt;/p&gt;
 
 &lt;p&gt;L’unica cosa che mi rimane da capire è come sincronizzare in modo più rapido il sito locale con quello remoto, con git era veramente immediato, con FTP la cosa è un pò più macchinosa. Quando trovo una soluzione interessante ci faccio un nuovo post.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Upgrade&lt;/strong&gt;
+La soluzione che ho trovato per trasferire i file sul server è attraverso il comando rsync (premesso che io ho una chiave ssh con passphrase):&lt;/p&gt;
+
+&lt;p&gt;Per trasferire da locale a remoto&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rsync -aP -e &quot;ssh -i /home/utente/.ssh/chiavessh&quot; _site/ utente@IPSERVER:/home/utente/sitojekyll/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Nel server dalla directory sincronizzata con il comando precedente, sincronizzo con la directory presente in /var/www&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo rsync -aP sitojekyll/ /var/www/sitojekyll/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;Licenza d’uso&lt;/strong&gt;
 &lt;a href=&quot;https://creativecommons.org/licenses/by-nc-sa/4.0/&quot;&gt;© CC BY-NC-SA&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="post" /><category term="jekyll" /><summary type="html">Nuovo anno Nuovo server</summary></entry><entry><title type="html">Photo Galley</title><link href="https://www.francescolavella.it/photo-gallery/" rel="alternate" type="text/html" title="Photo Galley" /><published>2019-05-10T00:00:00+02:00</published><updated>2019-05-10T00:00:00+02:00</updated><id>https://www.francescolavella.it/photo-gallery</id><content type="html" xml:base="https://www.francescolavella.it/photo-gallery/">&lt;h1 id=&quot;creare-una-photo-galley-con-jekyll&quot;&gt;&lt;strong&gt;Creare una Photo Galley con Jekyll&lt;/strong&gt;&lt;/h1&gt;
