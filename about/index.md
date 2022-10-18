@@ -10,15 +10,19 @@ date: 2016-03-21
 
 </div>
 
-Il mio nome è Francesco La Vella, ma il mio nome da nerd è kireime.
+Il mio nome è Francesco La Vella, ma tra nerd sono conosciuto come kireime.
 
 In questo blog trovi sia articoli di carattere tecnico, sia cose più personali.
 
 Nella vita di tutti i giorni ricopro il ruolo di Socio Amministratore della Sintab srl con incarico di Responsabile Analisi dei Fabbisogni, Progettazione ed Erogazione dei servizi formativi e Project Manager
 
-Sono anche formatore EIPASS esperto di formazione nel settore ICT tenendo corsi in presenza finalizzati all’acquisizione delle certificazioni EIPASS.
+Ho coltivato negli anni una passione per il mondo formato bit e per questo mi piace definirmi "technology hacktivist". Negli ultimi anni ho avviato un movimento chiamato Coding Circus per la sensibilizzazione delle scuole, famiglie e bambini su argomenti incentrati sulla programmazione e in generale sulle STEM, il mio ambiente preferito per sviluppare queste competenze è Minecraft Education Edition. Sono MIE Fellow (Microsoft Innovative Educator) per gli anni 2020-2023
 
-Ma come dott. Jekyll e mr. Hyde (guarda un pò il caso..) sono un appassionato di tecnologia e dedico il mio tempo libero a progetti informatici, per questo mi piace definirmi un Education hacktivist, networking ninja e technology evangelist.
+Sono anche formatore esperto di formazione nel settore ICT tenendo corsi in presenza e online finalizzati all’acquisizione delle certificazioni di informatica.
+
+Ho una conoscenza approfondita della maggior parte dei S.O presenti attualmente: Windows, Linux, uso frequentemente Ubuntu Linux. Gestisco per la mia società tutta l'infrastruttura IT: server, cablaggi, siti web, ecc. 
+
+Ho una stampante 3D e conosco le principali piattaforma per progetti "makers": Arduino, Microbit, Raspberry.
 
 <h1>Cosa ho già fatto</h1>
 
@@ -59,11 +63,6 @@ Dal 2010 ad oggi ho ricoperto incarichi da Project Manager per la selezione dell
 
 Associazione non a scopo di lucro italiana attiva nella promozione dei sistemi operativi GNU/Linux ed in generale del software libero
 [http://www.ils.org/](http://www.ils.org/)
-
-**Socio sostenitore Metro Olografix**
-
-Metro Olografix è una comunità virtuale fondata sulla libera circolazione delle informazioni, sul concetto di villaggio globale, su di una decisionalità democratica.
-[http://www.olografix.org](http://www.olografix.org)
 
 **Dal 2016 ho avviato una community chiamata Coding Circus**
 
