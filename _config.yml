@@ -4,7 +4,7 @@ bio:            "pensieri sparsi"
 description:    "su di me e altre storie"
 picture:        "assets/img/profile.png"
 locale:         it_IT
-url:            https://www.francescolavella.it
+url:            https://francescolv.github.io
 
 # Jekyll
 permalink:      /:title/
