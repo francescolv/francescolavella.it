@@ -132,7 +132,7 @@ PLATFORMS
 DEPENDENCIES
   csv
   faraday-retry
-  jekyll
+  jekyll (~> 4.0)
   jekyll-analytics
   jekyll-feed
   jekyll-gallery-generator
@@ -140,6 +140,7 @@ DEPENDENCIES
   jekyll-mentions
   jekyll-sitemap
   jekyll-youtube
+  kramdown-parser-gfm
   observer
   webrick (~> 1.8)
 
