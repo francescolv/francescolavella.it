@@ -1,9 +1,12 @@
 source "https://rubygems.org"
 
-gem "jekyll" , "~> 4.0"
+ruby "3.4.6"
+
+gem "jekyll" , "~> 4.4"
 gem "csv"
 gem "faraday-retry"
 gem "observer"
+gem "logger"
 
 #gem "github-pages", group: :jekyll_plugins
 gem "kramdown-parser-gfm"
