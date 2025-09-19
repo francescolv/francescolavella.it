@@ -7,8 +7,7 @@ gem "csv"
 gem "faraday-retry"
 gem "observer"
 gem "logger"
-
-#gem "github-pages", group: :jekyll_plugins
+gem "webrick", "~> 1.8"
 gem "kramdown-parser-gfm"
 
 #gem "rouge"
@@ -23,6 +22,3 @@ group :jekyll_plugins do
   gem "jekyll-gist"
   gem "jekyll-gallery-generator"
 end
-
-gem "webrick", "~> 1.8"
-

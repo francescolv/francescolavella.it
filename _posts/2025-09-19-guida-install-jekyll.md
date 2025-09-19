@@ -179,6 +179,8 @@ il build “nativo” di GitHub Pages non supporta Jekyll 4.4 (al momento GitHub
 Per usare Jekyll 4.4 devi costruire il sito con GitHub Actions e pubblicare l’output di _site
 
 
+
+
 **Applicativi aggiuntivi che possono tornare utili**
 
     sudo apt-get install libmagickwand-dev
