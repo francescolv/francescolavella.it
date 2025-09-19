@@ -27,7 +27,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           # Versione consigliata e stabile per Jekyll 4.4
-          ruby-version: '3.4.6'
+          ruby-version: '3.4'
           bundler-cache: true  # cache automatico di bundle install
 
       - name: Install gems
@@ -37,6 +37,11 @@ jobs:
         env:
           JEKYLL_ENV: production
         run: bundle exec jekyll build --trace
+
+      - name: Sanity check artifact
+        run: |
+          test -f _site/index.html || (echo "index.html missing" && exit 1)
+          ls -lah _site | head -n 100
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
