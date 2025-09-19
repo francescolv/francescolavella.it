@@ -138,6 +138,13 @@ Verifiche rapide
     git remote -v           # deve mostrare l'URL SSH
     git status              # stato della working tree
 
+### Aggiornare i repo
+
+    git add -A
+    git commit -m "Aggiornamenti"
+    git push origin main
+
+### Alias
 Se hai il tuo progetto in una cartella Documenti di windows spesso il comando è un pò lungo, per velocizzare la cosa ho impostato un alias, ti mostro come fare
 
 In WSL le directory di Windows sono in /mnt/c/
