@@ -1,4 +1,11 @@
-.sass-cache/
-.jekyll-cache/
+# Jekyll
 _site/
-vendir/
+.jekyll-cache/
+.sass-cache/
+.cache/
+# Ruby/Bundler
+vendor/
+.bundle/
+# OS / editor
+.DS_Store
+Thumbs.db

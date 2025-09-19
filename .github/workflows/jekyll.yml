@@ -1,4 +1,4 @@
-name: Deploy Jekyll 4.4 (Ruby 3.4) to GitHub Pages
+name: Deploy Jekyll 4.4 (Ruby 3.4.6) to GitHub Pages
 
 on:
   push:
@@ -21,18 +21,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Ruby 3.4
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Setup Ruby 3.4.6
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4'
+          ruby-version: '3.4.6'
           bundler-cache: true
-
-      # 👉 NON installiamo il gruppo :gallery in CI
-      - name: Install gems (without :gallery)
-        run: |
-          bundle lock --add-platform x86_64-linux
-          bundle config set without 'gallery'   # <- chiave
-          bundle install --jobs 4 --retry 3
 
       - name: Build site with Jekyll (CI config)
         env:

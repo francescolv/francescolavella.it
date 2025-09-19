@@ -105,6 +105,8 @@ GEM
       jekyll (>= 3.7, < 5.0)
     jekyll-sass-converter (3.1.0)
       sass-embedded (~> 1.75)
+    jekyll-seo-tag (2.8.0)
+      jekyll (>= 3.8, < 5.0)
     jekyll-sitemap (1.4.0)
       jekyll (>= 3.7, < 5.0)
     jekyll-watch (2.2.1)
@@ -198,6 +200,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  bundler
   csv
   faraday-retry
   jekyll (~> 4.4)
@@ -206,12 +209,16 @@ DEPENDENCIES
   jekyll-gallery-generator
   jekyll-gist
   jekyll-mentions
+  jekyll-seo-tag
   jekyll-sitemap
   jekyll-youtube
   kramdown-parser-gfm
   logger
   observer
   webrick (~> 1.8)
+
+RUBY VERSION
+   ruby 3.4.6p54
 
 BUNDLED WITH
    2.7.2

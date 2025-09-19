@@ -6,7 +6,7 @@ picture:        "assets/img/profile.png"
 locale:         it_IT
 
 url: "https://francescolv.github.io"
-baseurl: "/francescolavella.it"   # attenzione allo slash iniziale
+baseurl: ""    # attenzione allo slash iniziale
 
 # Jekyll
 permalink:      /:title/
@@ -100,4 +100,13 @@ gallery:
       #  desc: "Gallery Description" # Info fields can be used in custom templates.
 
 # Exclude list
+exclude:
+  - README.md
+  - node_modules
+  - vendor
+  - src
+  - CNAME
+  - LICENSE
+  - Rakefile
+  
 #exclude: [README.md, Gemfile, Gemfile.lock, node_modules, gulpfile.js, package.json, _site, src, vendor, CNAME, LICENSE, Rakefile]

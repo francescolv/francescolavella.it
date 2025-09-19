@@ -1,13 +1,7 @@
-# _config.ci.yml
-# Sovrascrive la lista dei plugin in CI: NIENTE galleria qui.
-plugins:
-  - jekyll-mentions
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-youtube
-  - jekyll-analytics
-  - jekyll-seo-tag
-# Se non usi questi, elimina le righe corrispondenti.
-
-
+# Override solo per il build su CI (GitHub Actions)
+url: "https://francescolv.github.io"
+baseurl: ""         # user page = vuoto
+lsi: false
+incremental: false
+safe: false         # compiliamo noi, quindi ok anche con plugin non whitelisted da Pages classico
+future: false
