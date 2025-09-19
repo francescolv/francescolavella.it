@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-09-19T18:51:38+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">francesco la vella</title><subtitle>su di me e altre storie</subtitle><entry><title type="html">Guida Installazione da zero Jekyll su WSL</title><link href="http://localhost:4000/guida-install-jekyll/" rel="alternate" type="text/html" title="Guida Installazione da zero Jekyll su WSL" /><published>2025-09-19T00:00:00+02:00</published><updated>2025-09-19T00:00:00+02:00</updated><id>http://localhost:4000/guida-install-jekyll</id><content type="html" xml:base="http://localhost:4000/guida-install-jekyll/"><![CDATA[<h1 id="guida-passo-passo-per-installare-jekyll-e-gestire-il-nostro-sito"><strong>Guida Passo Passo per installare Jekyll e gestire il nostro sito</strong></h1>
+
+<p>Anche se questo sito è rimasto dormiente per un pò, grazie all’azzeccatissima scelta di utilizzare jekyll come motore per scrivere questo sito, con pochi passaggi ho di nuovo tutto bello pronto e aggiornato all’ultima versione</p>
+
+<p>Ma prima di aggiornare questo post ho dovuto riconfigurare jekyll sul mio pc, sincronizzare i repo su git e via…</p>
+
+<p>Raccolgo in questa guida tutti i passaggi passo passo, da zero per un sistema funzionante su WSL Ubuntu</p>
+
+<h3 id="installeremo">Installeremo</h3>
+<ol>
+  <li>Ruby 3.4.6</li>
+  <li>Jekyll 4.4</li>
+  <li>imagemagick (per me è necessario perchè ho una gallery)</li>
+  <li>Git</li>
+</ol>
+
+<h3 id="ruby">Ruby</h3>
+
+<p>Installazione con rbenv (consigliato)</p>
+
+<p>Aggiorna i pacchetti e installa le dipendenze</p>
+
+<p>Apri il tuo terminale WSL e esegui i seguenti comandi per aggiornare la lista dei pacchetti e installare le librerie necessarie per la compilazione di Ruby</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt update
+sudo apt install -y build-essential libssl-dev libreadline-dev zlib1g-dev libffi-dev libyaml-dev
+</code></pre></div></div>
+
+<p>Installa rbenv</p>
+
+<p>Clona il repository di rbenv</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+</code></pre></div></div>
+
+<p>Inizializza rbenv nel tuo terminale (questo aggiungerà le righe necessarie al tuo file .bashrc o .zshrc)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo 'export PATH="$HOME/.rbenv/bin:$PATH"' &gt;&gt; ~/.bashrc
+echo 'eval "$(rbenv init -)"' &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre></div></div>
+
+<p>Installa il plugin ruby-build
+Questo plugin permette a rbenv di scaricare e compilare Ruby</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+</code></pre></div></div>
+
+<p>Installa Ruby 3.4.6</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv install 3.4.6
+</code></pre></div></div>
+
+<p>Questo comando scaricherà e compilerà Ruby, il che potrebbe richiedere alcuni minuti.</p>
+
+<p>Verifica l’installazione</p>
+
+<p>Controlla che Ruby sia stato installato correttamente e che sia la versione desiderata:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby -v
+</code></pre></div></div>
+
+<h3 id="jekyll">Jekyll</h3>
+<p>Installa Bundler</p>
+
+<p>È utile installare subito Bundler, il gestore di gemme per Ruby</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install bundler
+rbenv rehash
+gem update --system
+gem install bundler jekyll
+rbenv rehash
+jekyll -v
+</code></pre></div></div>
+
+<h3 id="sito-jekyll-già-installato">Sito jekyll già installato</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle update
+bundle exec jekyll serve
+</code></pre></div></div>
+
+<p>Anteprima</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://127.0.0.1:4000/
+</code></pre></div></div>
+
+<h3 id="github">github</h3>
+
+<p>Aggiorna e installa Git (in WSL)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt update &amp;&amp; sudo apt install -y git openssh-client
+</code></pre></div></div>
+
+<p>Configura Git (nome/email e opzioni utili)</p>
+
+<p>Sostituisci con i tuoi dati GitHub.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config --global user.name "Nome Cognome"
+git config --global user.email "la-tua-email-collegata-a-github@example.com"
+git config --global init.defaultBranch main
+git config --global pull.rebase false
+</code></pre></div></div>
+
+<p>Genera una chiave SSH in WSL (salta questo passaggio se hai già una tua chiave)</p>
+
+<p>Consigliato per evitare token/password ogni volta.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen -t ed25519 -C "la-tua-email-collegata-a-github@example.com"
+</code></pre></div></div>
+
+<p>Premi Invio per accettare ~/.ssh/id_ed25519 e (facoltativo) imposta una passphrase</p>
+
+<p>Avvia l’agent e carica la chiave</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+</code></pre></div></div>
+
+<p>Aggiungi la chiave pubblica al tuo account GitHub</p>
+
+<p>Copia la chiave</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat ~/.ssh/id_ed25519.pub
+</code></pre></div></div>
+
+<p>Vai su GitHub → Settings → SSH and GPG keys → New SSH key.</p>
+
+<p>Incolla l’output.</p>
+
+<p>(Se preferisci via CLI, puoi installare gh e fare gh auth login, ma non è necessario.)</p>
+
+<p>Testa la connessione SSH a GitHub</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh -T git@github.com
+</code></pre></div></div>
+
+<p>Alla prima connessione, rispondi yes. Se vedi un messaggio tipo “Hi <tuo-username>! You've successfully authenticated…”, sei a posto.</tuo-username></p>
+
+<p>Scegli dove mettere il progetto e clona il repo</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p ~/progetti &amp;&amp; cd ~/progetti
+git clone git@github.com:tuorepo.git
+cd progetti
+</code></pre></div></div>
+
+<p>Verifiche rapide</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote -v           # deve mostrare l'URL SSH
+git status              # stato della working tree
+</code></pre></div></div>
+
+<p>Se hai il tuo progetto in una cartella Documenti di windows spesso il comando è un pò lungo, per velocizzare la cosa ho impostato un alias, ti mostro come fare</p>
+
+<p>In WSL le directory di Windows sono in /mnt/c/</p>
+
+<p>un comando tipico potrebbe essere cd “/mnt/c/Users/Francesco/Code/repo-git” (è messo tra “ “ perchè in questo modo eventuali spazi presenti nelle directory sono gestiti senza errori)</p>
+
+<p>Utlizziamo gli alias per praticità</p>
+
+<p>Se usi bash (default in WSL):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nano ~/.bashrc
+</code></pre></div></div>
+
+<p>Aggiungi l’alias in fondo al file</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>alias jekyll='cd "/mnt/c/Users/Francesco/Code/repo-git"'
+</code></pre></div></div>
+
+<p>Così il comando sarà jekyll</p>
+
+<p>Ricarica la configurazione</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>source ~/.bashrc   # o ~/.zshrc se usi zsh
+</code></pre></div></div>
+
+<p>D’ora in poi, ti basta digitare:</p>
+
+<p>jekyll</p>
+
+<p>e verrai portato direttamente nella cartella del progetto.</p>
+
+<p><strong>Applicativi aggiuntivi che possono tornare utili</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install libmagickwand-dev
+</code></pre></div></div>
+
+<p><strong>Licenza d’uso</strong>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">© CC BY-NC-SA</a></p>]]></content><author><name></name></author><category term="post" /><category term="jekyll" /><summary type="html"><![CDATA[Guida Installazione da zero Jekyll su WSL]]></summary></entry><entry><title type="html">Nuovo anno Nuovo server</title><link href="http://localhost:4000/nuovo-server/" rel="alternate" type="text/html" title="Nuovo anno Nuovo server" /><published>2020-02-15T00:00:00+01:00</published><updated>2020-02-15T00:00:00+01:00</updated><id>http://localhost:4000/nuovo-server</id><content type="html" xml:base="http://localhost:4000/nuovo-server/"><![CDATA[<h1 id="nuovo-anno-nuovo-server"><strong>Nuovo Anno Nuovo Server</strong></h1>
+
+<p>E’ passato veramente tanto tempo dall’ultimo post pubblicato, un pò a causa di impegni professionali, un pò perchè questo sito in jekyll hostato su github aveva qualche problema.</p>
+
+<p>Allora mi sono deciso a traslocare su un server personale ed aggiornare Jekyll all’ultima versione 4.0</p>
+
+<p>Devo dire che la cosa è stata abbastanza semplice avendo già una LAMP pronta, è stato sufficiente trasferire la directory <code class="language-plaintext highlighter-rouge">_site</code> generata con il comando <code class="language-plaintext highlighter-rouge">jekyll build</code> , puntare il virtual host e i DNS al nuovo server ed il gioco è fatto</p>
+
+<p>E visto che la cosa mi è piaciuta, abbiamo deciso di rinnovare anche il sito <a href="https://www.sintab.it">www.sintab.it</a> con jekyll - Presto online</p>
+
+<p>L’unica cosa che mi rimane da capire è come sincronizzare in modo più rapido il sito locale con quello remoto, con git era veramente immediato, con FTP la cosa è un pò più macchinosa. Quando trovo una soluzione interessante ci faccio un nuovo post.</p>
+
+<p><strong>Upgrade</strong>
+La soluzione che ho trovato per trasferire i file sul server è attraverso il comando rsync (premesso che io ho una chiave ssh con passphrase):</p>
+
+<p>Per trasferire da locale a remoto</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rsync -aP -e "ssh -i /home/utente/.ssh/chiavessh" _site/ utente@IPSERVER:/home/utente/sitojekyll/
+</code></pre></div></div>
+
+<p>Nel server dalla directory sincronizzata con il comando precedente, sincronizzo con la directory presente in /var/www</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo rsync -aP sitojekyll/ /var/www/sitojekyll/
+</code></pre></div></div>
+
+<p><strong>Licenza d’uso</strong>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">© CC BY-NC-SA</a></p>]]></content><author><name></name></author><category term="post" /><category term="jekyll" /><summary type="html"><![CDATA[Nuovo anno Nuovo server]]></summary></entry><entry><title type="html">Photo Galley</title><link href="http://localhost:4000/photo-gallery/" rel="alternate" type="text/html" title="Photo Galley" /><published>2019-05-10T00:00:00+02:00</published><updated>2019-05-10T00:00:00+02:00</updated><id>http://localhost:4000/photo-gallery</id><content type="html" xml:base="http://localhost:4000/photo-gallery/"><![CDATA[<h1 id="creare-una-photo-galley-con-jekyll"><strong>Creare una Photo Galley con Jekyll</strong></h1>
+
+<h2 id="obiettivi">Obiettivi</h2>
+<p>Creare una gallery per la pubblicazione delle Immagini e la generazione automatica di thumbnails delle foto caricate</p>
+
+<h2 id="descrizione">Descrizione</h2>
+<p><strong>Installare su Ubuntu le dipendenze</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt install libmagick++-dev
+gem install rmagick exifr
+</code></pre></div></div>
+<p><strong>Installare il plugin</strong> jekyll-gallery-generator
+o attraverso</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install jekyll-gallery-generator
+</code></pre></div></div>
+<p>o attraverso <code class="language-plaintext highlighter-rouge">gem 'jekyll-gallery-generator'</code> nel file <code class="language-plaintext highlighter-rouge">Gemfile</code></p>
+
+<p>e lanciare il comando <code class="language-plaintext highlighter-rouge">bundle</code></p>
+
+<p>Aggiungere jekyll-gallery-generator nella lista dei plugin in _config.yml:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plugins:
+  - jekyll-gallery-generator
+</code></pre></div></div>
+
+<p>Crea una directory photos e al suo interno una directory per ogni gallery</p>
+
+<h2 id="configurazione">Configurazione</h2>
+<p>Aggiungere nel file _config.yml</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gallery:
+  dir: photos               # Path to the gallery
+  symlink: false            # false: copy images into _site. true: create symbolic links (saves disk space)
+  title: "Photos"           # Title for gallery index page
+  title_prefix: "Photos: "  # Title prefix for gallery pages. Gallery title = title_prefix + gallery_name
+  sort_field: "date_time"   # How to sort galleries on the index page.
+                            # Possible values are: title, date_time, best_image
+  thumbnail_size:
+    x: 400                  # max width of thumbnails (in pixels)
+    y: 400                  # max height of thumbnails (in pixels)
+  
+  # The following options are for individual galleries.
+  galleries:
+    nome_gallery:
+      best_image: image.jpg  # The image to show on the gallery index page. Defaults to the last image.
+      name: "nome_gallery"
+      hidden: true          # Don't show this gallery on the index page. People must guess the URL.
+      sort_reverse: true    # Reverse sort images in gallery.
+      info:
+        desc: "Gallery Description" # Info fields can be used in custom templates.
+</code></pre></div></div>
+
+<h2 id="riferimenti">Riferimenti</h2>
+<p>per ulteriori informazioni:
+<a href="https://github.com/ggreer/jekyll-gallery-generator">https://github.com/ggreer/jekyll-gallery-generator</a></p>
+
+<p><strong>Licenza d’uso</strong>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">© CC BY-NC-SA</a></p>]]></content><author><name></name></author><category term="Howto" /><category term="post" /><category term="jekyll" /><summary type="html"><![CDATA[Photo Galley]]></summary></entry><entry><title type="html">[Progetto #4] Serra Automatizzata</title><link href="http://localhost:4000/serra-arduino/" rel="alternate" type="text/html" title="[Progetto #4] Serra Automatizzata" /><published>2019-05-07T00:00:00+02:00</published><updated>2019-05-07T00:00:00+02:00</updated><id>http://localhost:4000/serra-arduino</id><content type="html" xml:base="http://localhost:4000/serra-arduino/"><![CDATA[<h1 id="serra-automatizzata-con-arduino--cc-by-nc-sa"><strong>Serra Automatizzata con Arduino</strong> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">© CC BY-NC-SA</a></h1>
+<h2 id="obiettivi"><strong>Obiettivi</strong></h2>
+<p>Costruzione di una Serra in outdoor per la semina di colture da trasferire poi successivamente in campo aperto.</p>
+
+<p>L’Automazione prevede l’aquisizione di dati come Temperature, Umidità dell’aria, Umidità del terreno, Luminosità ambientale e di conseguenza avviare una pompa per l’irrigazione, accendere LED, avviare ventole per il raffreddamento.</p>
+
+<h2 id="componenti-e-attrezzature"><strong>Componenti e attrezzature</strong></h2>
+<ol>
+  <li>Arduino Mega R3 2560</li>
+  <li>Modulo relay 4 Canali DC 5V</li>
+  <li>Display I2C LCD 2004 20 x 4</li>
+  <li>Photoresistori 5 mm GL5516</li>
+  <li>Igrometro</li>
+  <li>Sensore umidità DHT11</li>
+  <li>Alimentatore 10A 12V</li>
+  <li>Converter 12V a 5V 3A DC/DC</li>
+  <li>Resistenze 220 ohm</li>
+  <li>Strisia led 5m DC 12V, Rosso Blu 5:1</li>
+  <li>Pompa Mini DC12V 9W</li>
+  <li>Breadboard</li>
+  <li>Fili elettrici e connettori</li>
+  <li>Sistema tubi irrigazione</li>
+</ol>
+
+<h2 id="descrizione"><strong>Descrizione</strong></h2>
+<p>Per questo progetto sono partito da una serra che già avevamo in uso, ma con un sistema manuale di monitoraggio e irrigazione.</p>
+
+<p>La serra ha una superficie di 2m x 1m e altezza 1m</p>
+
+<p>Tutto il materiale è stato acquistato su amazon, ma se non si hanno particolari esigenze di tempo molto può essere acquistato anche su Aliexpress con un risparmio economico notevole</p>
+
+<p>L’Assemblaggio non è complesso, si parte dall’Arduino Mega, scelto per le sue ampie possibilità (un numero maggiore di porte di input/output ed una maggiore memoria destinata agli sketch), al quale collego i vari sensori: Un photoresitore per rilevare la luminosità ambientale ed attivare di notte la striscia a LED; l’Igrometro per rilevare l’umidità del terreno ed attivare la pompa dell’acqua; Il sensore di temperatura e umidità ambientale per attivare in futuro le ventole di raffreddamento.</p>
+
+<p>La striscia a LED, la pompa dell’acqua e le ventole sono connesse al modulo Relay</p>
+
+<p>I dati rilevati sono visibili attraverso un display</p>
+
+<p>La pompa dell’aqua pesca l’acqua in un contenitore posto al di fuori della serra e in caso l’umidità del terreno scenda al di sotto di un determinato valore pompa acqua verso un sistema di tubi per l’irrigazione a spruzzo posti nel tetto della serra</p>
+
+<p>In futuro prevedo di rilevare la quantità di acqua nella cisterna che eventualmente può essere collegata direttamente al sistema irriguo e auto riempirsi, inoltre è previsto un sistema di raffreddamento attraverso delle ventole poste ai lati della serra e per serre che prevedono finestre apribili con bracci a pistone un sistema di apertura delle finestre automatizzate in base alla temperatura interna.</p>
+
+<h2 id="codice"><strong>Codice</strong></h2>
+<p>Librerie da Installare:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//   Programma remixato da Francesco La Vella da un programma realizzato da Letterio Bavastrelli e rilasciato con GNU GPL V.3
+//   Serra autonoma con sensore di temperatura e umidità (DHT11), igrometro, fotoresistore, display LCD 20x4, sensore livello acqua e relè.
+
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see &lt;https://www.gnu.org/licenses/gpl-3.0.html&gt;.
+
+const int valore_limite = 990; //Valore dell'igrometro al quale il relay sarà ON
+
+//DHT11 Sensor:
+#include "DHT.h"
+#define DHTPIN 12     // Sensore collegato al PIN 12
+#define DHTTYPE DHT11   // DHT 11
+DHT dht(DHTPIN, DHTTYPE);
+
+
+//I2C LCD:
+#include &lt;Wire.h&gt; // Libreria WIRE (da aggiornare se non funziona)
+#include &lt;LiquidCrystal_I2C.h&gt; // Libreria LCD I2C
+
+// LCD I2C address
+LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE); // da cambiare se si ha un modello diverso
+
+
+void setup()
+{
+// PIN 11 al Relè - IN1  // Pompa dell'acqua
+Serial.begin(9600);
+  pinMode(11, OUTPUT);
+
+// PIN 10 al relè - IN2  // striscia a led
+  pinMode(10, OUTPUT);
+
+// PIN 9 al relè - IN3  // ventole raffreddamento serra
+  pinMode(9, OUTPUT);
+
+//PIN 13 al LED  //non sto usando per ora
+//  pinMode (13, OUTPUT);
+
+//I2C LCD
+Serial.begin(9600);
+  lcd.begin(20,4);
+  Serial.println("Serra Autonoma di kireime");
+  
+// Avvio sensore DHT11  
+  dht.begin();
+}
+
+
+void loop()
+{
+
+// Fotoresistore
+int Lumen = analogRead (A0); // Lumen come intero della lettura del pin A0
+Serial.print("Sensore crepuscolare: ");
+Serial.println(Lumen, DEC); // Stampa un valore decimale del fotoresistore
+  
+if (Lumen &gt; 750) {
+  digitalWrite (10, HIGH); // Se il valore di Lumen è superiore a 750 attiva relè
+  lcd.setCursor(0,3);  // Indica posizione del cursore su LCD
+  lcd.print("Buona Notte"); // Stampa su LCD il testo
+  }
+else {
+  digitalWrite (10, LOW); // altrimenti spegne relè
+  lcd.setCursor(0,3);  // Indica posizione del cursore su LCD
+  lcd.print("Buon Giorno"); // Stampa su LCD il testo
+  }
+delay (2000);  // Intervallo di 2 secondi
+
+
+//Livello Acqua  // per ora non sto usando
+//int water = analogRead(A1);
+//Serial.print ("Sensore acqua: ");
+//Serial.println(water, DEC);  // Stampa il valore decimale del sensore di livello acqua
+  
+//  if (water &gt;= 100) {
+    
+//    lcd.setCursor(0,3);  // Indica posizione del cursore su LCD
+//    lcd.print("Acqua: OK"); // Stampa su LCD il testo
+//  }
+//  else    
+//    {
+//    lcd.setCursor(0,3);  // Indica posizione del cursore su LCD
+//    lcd.print("Acqua: BASSA"); // Stampa su LCD il testo
+//    alarm();
+//    flash();
+//    delay(2000); // Intervallo di 2 secondi
+//    }
+
+// Igrometro
+int igro = analogRead(A3); // Legge il valore analogico
+int umdtrr = 0; // Variabile umidità suolo
+umdtrr = map (igro, 100, 990, 100, 0); // converto il valore analogico in percentuale
+Serial.print("Umidità del terreno: ");
+Serial.print(umdtrr);
+Serial.println ("%"); //Stampa a schermo il valore
+
+if (igro &lt;= valore_limite)
+  digitalWrite(11,LOW); // Attiva Relè 1
+else
+  digitalWrite(11,HIGH); // Spegni Relè 1
+delay(2000); // Attende due secondi
+
+
+// Lettura umidità e temperatura del sensore DHT11
+int h = dht.readHumidity();
+int t = dht.readTemperature();
+
+// Misura la temperatura e se maggiore di 40 gradi attiva relè per accendere la ventola
+if (t &gt;= 40 )
+   digitalWrite (9, HIGH); // Attiva Relè 3
+else
+   digitalWrite (9, LOW); // Spegni Relè 3
+delay (2000);
+
+  Serial.print("Temp: ");
+  Serial.print(t);
+  Serial.print("C, Umid: ");
+  Serial.print(h);
+  Serial.println("%");
+
+
+// impostare cursore sulla prima riga:
+lcd.setCursor(0, 0);
+lcd.print("Temperatura: ");
+lcd.print(t);
+lcd.print("C");
+  
+// imposta cursore sulla seconda riga:
+lcd.setCursor(0,1);
+lcd.print("Umidita': ");
+lcd.print(h);
+lcd.print("%");
+
+// imposta il cursore sulla terza riga:
+lcd.setCursor(0,2);
+lcd.print("Umidita' terra: ");
+lcd.print(umdtrr);
+lcd.print("%");
+
+}
+
+// NON USATA PER ORA
+/*
+void alarm(){
+  tone(3,850,700);  // Imposta tono acustico su PIN 3
+  delay(150);       // Aspetta per 0,15 secondi
+  tone(3,850,700);  // Imposta tono acustico su PIN 3
+  delay(150);       // Aspetta per 0,15 secondi
+}
+
+void flash() {
+  digitalWrite(13, HIGH);   // Imposta il LED su ON
+  delay(1000);               // Aspetta per 1 secondo
+  digitalWrite(13, LOW);    // Impostiamo il LED su OFF
+  delay(1000);               // Aspetta per 1 secondo
+}
+*/
+</code></pre></div></div>
+<p><a href="/assets/img/serra/SERRA_DOMOTIZZATA.ino">Scarica lo sketch</a></p>
+
+<h2 id="schema"><strong>Schema</strong></h2>
+<p><img src="/assets/img/serra/serra_fzz.png" alt="img" /></p>
+
+<p><a href="/assets/img/serra/Serra_domotizzata.fzz">Scarica lo schema in fritzing</a></p>
+
+<h2 id="gallery"><strong>Gallery</strong></h2>
+<p><a href="/photos/serra/">Guarda la raccolta fotografica</a></p>]]></content><author><name></name></author><category term="Arduino" /><category term="Makers" /><category term="agricolture" /><category term="greenhouse" /><category term="home automation" /><summary type="html"><![CDATA[Serra Automatizzata con Arduino]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/serra/home.png" /><media:content medium="image" url="http://localhost:4000/assets/img/serra/home.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">[Scratch 3] Pappagallo Flappy</title><link href="http://localhost:4000/Pappagallo_Flappy/" rel="alternate" type="text/html" title="[Scratch 3] Pappagallo Flappy" /><published>2019-04-10T00:00:00+02:00</published><updated>2019-04-10T00:00:00+02:00</updated><id>http://localhost:4000/Pappagallo_Flappy</id><content type="html" xml:base="http://localhost:4000/Pappagallo_Flappy/"><![CDATA[<h1 id="scratch-3-pappagallo-flappy"><strong>[Scratch 3] Pappagallo Flappy</strong></h1>
+
+<h2 id="introduzione"><strong>Introduzione</strong></h2>
+
+<p>In questo progetto creiamo la nostra versione del famosissimo gioco per mobile chiamato Flappy Bird. Questo progetto necessita di Scratch 3.0.
+Premi la barra spaziatrice per far sbattere le ali al pappagallo Flappy e farlo volare attraverso i tubi tagliati!</p>
+
+<h2 id="pappagallo-flappy"><strong>Pappagallo Flappy</strong></h2>
+
+<h2 id="passo-1-fai-cadere-flappy"><strong>Passo 1: Fai cadere Flappy</strong></h2>
+
+<p><strong>Lista delle Attività</strong></p>
+
+<ul>
+  <li>
+    <p>Crea un nuovo progetto Scratch.</p>
+  </li>
+  <li>
+    <p>Rimuovi il gatto Felix con click-destro e seleziona cancella.</p>
+  </li>
+  <li>
+    <p>Sostituisci lo sfondo con lo sfondo desert presente nella libreria di Scratch</p>
+  </li>
+  <li>
+    <p>Aggiungi il pappagallo Flappy. Devi aggiungere uno sprite con due costumi. Uno per ali-su ed uno per ali-giu. Lo sprite <strong>Parrot</strong> nella categoria Animali della libreria di Scratch va benissimo</p>
+  </li>
+  <li>
+    <p>Cambia il nome dello sprite in flappy</p>
+  </li>
+  <li>
+    <p>Crea un nuovo script per flappy:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>quando si clicca su Bandierina Verde`
+	vai a x: (-50) y: (0)`
+	per sempre`
+		cambia y di (-3)`
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><strong>Verifica il progetto</strong></p>
+
+<p>Fai click sulla bandierina verde</p>
+
+<p>Flappy inizia a volare al centro dello schermo e poi cade giù?</p>
+
+<p><strong>Salva il progetto</strong></p>
+
+<h2 id="passo-2-fai-volare-flappy"><strong>Passo 2: Fai volare Flappy</strong></h2>
+
+<p>Vogliamo che flappy voli in alto quando premi la barra spaziatrice</p>
+
+<p><strong>Lista delle Attività</strong></p>
+
+<p>Fai click sul tab Costumi e chiama i costumi con ali-su e ali-giu.</p>
+
+<p>Adesso torna al tab Codice ed aggiungi questo script:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>quando si preme il tasto [spazio]
+	passa al costume [ali-giu]
+	ripeti (10) volte
+		cambia y di (6)
+	fine
+	passa al costume [ali-su]
+	ripeti (10) volte
+		cambia y di (6)
+	fine
+</code></pre></div></div>
+
+<p><strong>Verifica il progetto</strong></p>
+
+<p>Fai click sulla bandierina verde</p>
+
+<p>Riesci a controllare flappy con la barra spaziatrice?</p>
+
+<p><strong>Salva il progetto</strong></p>
+
+<h2 id="passo-3-aggiusta-i-controlli"><strong>Passo 3: Aggiusta i controlli</strong></h2>
+
+<p>Ci piacerebbe che flappy rispondesse ai nostri comandi ogni volta che premiamo spazio. Quando premiamo spazio flappy inizia due cicli di movimento. Se premiamo spazio di nuovo prima che i loop siano finiti Scratch ignora la seconda pressione del tasto spazio. Per risolvere questo problema dobbiamo usare una variabile che conta il numero di battiti di ali necessari.</p>
+
+<p><strong>Lista delle Attività</strong></p>
+
+<p>Crea una nuova variabile solo per flappy e chiamala ali</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>quando si preme il tasto [spazio]
+	porta [ali] a [0]
+	passa al costume [ali-su]
+	per sempre
+		ripeti fino a quando &lt;(ali) = [0]&gt;
+		cambia [ali] di (-1)
+	passa al costume [ali-giu]    
+	ripeti (10) volte
+		cambia y di (6)
+	fine
+	passa al costume [ali-su]
+	ripeti (10) volte
+		cambia y di (6)
+	fine
+</code></pre></div></div>
+
+<p>Infine aggiungi un nuovo blocco quando si preme il tasto [spazio]:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>quando si preme il tasto [spazio]
+cambia [ali] di (1)
+</code></pre></div></div>
+
+<p><strong>Verifica il progetto</strong>
+Fai click sulla bandierina verde
+Adesso flappy sbatte le ali ogni volta che premi spazio?</p>
+
+<h2 id="passo-4-aggiungiamo-le-tubature"><strong>Passo 4: Aggiungiamo le tubature</strong></h2>
+
+<p>Adesso aggiungiamo degli ostacoli che Flappy deve evitare</p>
+
+<p><strong>Lista delle Attività</strong></p>
+
+<ul>
+  <li>Fai click su Disegna un nuovo sprite</li>
+  <li>Chiama il tuo costume con tubo</li>
+  <li>Se il costume è in modalità Bitmap fai click sul pulsante Converti in vettoriale</li>
+  <li>Fai click sullo strumento Rettangolo, seleziona un colore e fai click sul Rettangolo pieno</li>
+  <li>Fai click e crea due rettangoli, uno dall’alto verso il basso ed un altro dal basso verso l’alto, come visualizzato in figura:</li>
+</ul>
+
+<p>Puoi sfumare il colore dei rettangoli facendo click sullo strumento Riempimento, puoi scegliere diversi tipi di sfumatura
+Chiama il tuo sprite tubo</p>
+
+<p><strong>Salva il progetto</strong></p>
+
+<h2 id="passo-5-facciamo-muovere-le-tubature"><strong>Passo 5: Facciamo muovere le tubature</strong></h2>
+
+<p>Adesso facciamo muovere le tubature in modo casuale in modo da ostacolare il volo di Flappy.</p>
+
+<p><strong>Lista delle Attività</strong></p>
+
+<p>Fai click sullo sprite tubo e seleziona il tab Codice.
+Aggiungi questi script:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>quando si clicca su Bandierina Verde
+	nasconditi
+	porta dimensione al (150)%
+	per sempre
+		crea clone di [me stesso]
+		attendi (2) secondi
+
+quando vengo clonato
+	vai a x:(240)  y: (numero a caso tra (-80) e (80))
+	mostra
+	ripeti (120) volte
+		cambia x di (-4)
+	fine
+	elimina questo clone
+</code></pre></div></div>
+
+<p><strong>Verifica il progetto</strong></p>
+
+<p>Fai click sulla bandierina verde
+Vedi le tubature apparire a con una fessura a diverse altezze?
+Se e’ troppo difficile far volare Flappy tra le tubature, puoi rendere la fessura tra i tubi più ampia. Devi editare nuovamente il costume del tubo.</p>
+
+<p><strong>Salva il progetto</strong></p>
+
+<h2 id="passo-6-accorgersi-delle-collisioni-con-le-tubature"><strong>Passo 6: Accorgersi delle collisioni con le tubature</strong></h2>
+
+<p>Per rendere il gioco coinvolgente, il giocatore deve far volare Flappy attraverso le fessure nei tubi senza toccarli mai. Adesso aggiungiamo alcuni blocchi per capire quando Flappy urta qualcosa</p>
+
+<p><strong>Lista delle Attività</strong></p>
+
+<ul>
+  <li>Aggiungiamo un effetto sonoro per quando Flappy urta i tubi. Fai click sullo sprite flappy e poi sul tab Suoni</li>
+  <li>Scegli un suono dalla libreria e seleziona screech dalla categoria Animali</li>
+  <li>Adesso torna sullo script per Flappy</li>
+  <li>Aggiungi questo script:</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>quando si clicca su Bandierina Verde
+	attendi fino a quando ((sta toccando [bordo]) o (sta toccando [tubo]))
+	produci suono [screech]
+	dire [Game Over!]
+	invia a tutti [GameOver]
+	Ferma [tutti gli altri script dello sprite]
+</code></pre></div></div>
+
+<p>Fai click sullo script del tubo ed aggiungi:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>quando ricevo [GameOver]
+	Ferma [tutti gli altri script dello sprite]
+</code></pre></div></div>
+
+<p><strong>Verifica il progetto</strong>
+Fai click sulla bandierina verde
+Il gioco finisce quando Flappy urta un tubo o il bordo dello schermo?</p>
+
+<p><strong>Salva il progetto</strong></p>
+
+<h2 id="passo-7-aggiungi-il-punteggio"><strong>Passo 7: Aggiungi il punteggio</strong></h2>
+
+<p>Il giocatore fa un punto ogni volta che riesce a far volare Flappy attraverso una tubatura</p>
+
+<p><strong>Lista delle Attività</strong></p>
+
+<ul>
+  <li>Aggiungiamo un effetto sonoro per quando Flappy fà un punto. Fai click sullo sprite tubo ed aggiungi un suono dalla libreria. Scegli bird</li>
+  <li>Torna sullo script di tubo</li>
+  <li>Crea una nuova variabile per tutti gli sprite e chiamala punteggio.</li>
+  <li>Aggiungi un blocco per impostare il punteggio a 0 quando il gioco inizia:</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>quando vengo clonato
+	attendi fino a quando ((posizione x) &lt; ([posizione x] di [flappy]))
+	cambia [punteggio] di (1)
+	produci suono (bird)
+</code></pre></div></div>
+
+<p><strong>Verifica il progetto</strong></p>
+
+<p>Fai click sulla bandierina verde</p>
+
+<p>Il punteggio viene incrementato quando Flappy passa attraverso una tubatura?</p>
+
+<p><strong>Salva il progetto</strong></p>
+
+<p>Ben fatto!! Hai finito il gioco base. Ci sono altre cose che puoi fare con il tuo gioco. Dai un’occhiata alle sfide!</p>
+
+<h2 id="sfida-1-aggiungi-leffetto-gravità"><strong>Sfida 1: Aggiungi l’effetto gravità</strong></h2>
+
+<p>Quando qualcosa cade solitamente non lo fa’ a velocità costante. Per questa sfida faremo cadere Flappy con un’accelerazione di gravità.
+Aggiungi una nuova variabile solo per lo sprite flappy e chiamala gravità
+Cambia lo script per flappy in questo modo:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>quando si clicca su Bandierina Verde
+	porta [gravità] a [0]
+	vai a x: (-50) y: (0)
+	per sempre
+		cambia y di (gravità)
+		cambia [gravità] di (-0.4)
+</code></pre></div></div>
+
+<p>Cambia lo script di volo in questo modo:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>quando si preme il tasto [spazio]
+	porta [ali] a [0]
+	passa al costume [ali-su]
+	per sempre
+		ripeti fino a quando &lt;(ali) = [0]&gt;
+		cambia [ali] di (-1)
+	passa al costume [ali-giu]    
+	cambia [gravità] di (8)
+	aspetta (0.2) secondi
+	passa al costume [ali-su]
+	aspetta (0.2) secondi
+</code></pre></div></div>
+
+<p><strong>Verifica il progetto</strong>
+Fai click sulla bandierina verde
+Adesso Flappy e’ attratto verso il basso quando vola e cade?</p>
+
+<p><strong>Salva il progetto</strong></p>
+
+<h2 id="sfida-2-flappy-cade-per-terra"><strong>Sfida 2: Flappy cade per terra</strong></h2>
+
+<p>Quando il giocatore perde la partita Flappy cade a terra al fondo dello schermo
+Sostituisci il blocco invia a tutti GameOver con invia a tutti cado
+Adesso aggiungi questo script:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>quando ricevo [cado]
+	ruota in senso antiorario di (5) gradi
+
+quando ricevo [cado]
+ripeti fino a quando &lt;(posizione y) &lt; [-180]&gt;
+    cambia y di [gravità]
+    cambia [gravità] di (-0.4)
+fine
+nasconditi
+invia a tutti [GameOver]
+</code></pre></div></div>
+
+<p>Non dimenticarti di aggiungere il blocco mostrami e di orientare Flappy nella giusta direzione quando il gioco inizia.</p>
+
+<p><strong>Verifica il progetto</strong>
+Fai click sulla bandierina verde
+Flappy cade per terra quando urta una tubatura?
+Flappy riappare nella corretta posizione ed orientamento quando il gioco riprende?</p>
+
+<p><strong>Salva il progetto</strong></p>
+
+<h2 id="sfida-3-aggiungi-un-record"><strong>Sfida 3: Aggiungi un record</strong></h2>
+
+<ul>
+  <li>Crea una nuova variabile e seleziona <code class="language-plaintext highlighter-rouge">Cloud variable (stored on server)</code>
+Chiamala <code class="language-plaintext highlighter-rouge">record</code></li>
+  <li>Quando il gioco e’ finito controlla se devi registrare un nuovo record:
+```blocks
+quando ricevo [GameOver]
+  se &lt;(punteggio) &gt; (record)&gt; allora
+      porta [record] a (punteggio)
+  fine
+  arresta [tutti gli altri script dello sprite]</li>
+</ul>
+
+<p>Verifica il progetto
+Fai click sulla bandierina verde
+Il record viene aggiornato correttamente?
+Salva il progetto
+```</p>
+
+<p>Ben fatto!!! Hai finito con questo esercizio. Adesso divertiti con il tuo nuovo gioco!!!
+Ehi, non dimenticare che puoi condividere il tuo gioco con tutti i tuoi amici e familiari.</p>
+
+<p>Progetto convertito per scratch 3 partendo da</p>
+
+<p><a href="https://github.com/RaspberryPiFoundation/scratch-curriculum">Scratch-curriculum di Raspberry pi Foundation</a></p>]]></content><author><name></name></author><category term="scratch3" /><category term="coding" /><category term="stem" /><summary type="html"><![CDATA[[Scratch 3] Pappagallo Flappy]]></summary></entry><entry><title type="html">Le 11 Regole del Garage</title><link href="http://localhost:4000/11-regole_garage/" rel="alternate" type="text/html" title="Le 11 Regole del Garage" /><published>2019-02-18T00:00:00+01:00</published><updated>2019-02-18T00:00:00+01:00</updated><id>http://localhost:4000/11-regole_garage</id><content type="html" xml:base="http://localhost:4000/11-regole_garage/"><![CDATA[<h1 id="le-11-regole-del-garage"><strong>Le 11 Regole del Garage</strong></h1>
+
+<p>Un blog che prova a parlare di Innovazione e ogni giorno si lascia ispirare dai grandi innovatori non può non riportare il Manifesto degli Innovatori.</p>
+
+<p>I pionieri delle regole del garage rimasti nella storia  nell’information technology sono David Packard e Bill Hewlett che fondarono Hp in un garage di Palo Alto nel 1935, dopo la laurea alla Stanford University.</p>
+
+<ol>
+  <li>Convinciti che puoi cambiare il mondo</li>
+  <li>Lavora velocemente, tieni gli attrezzi  sempre a portata di mano</li>
+  <li>Sappi quando lavorare da solo e quando lavorare in gruppo</li>
+  <li>Condividi strumenti e idee: abbi fiducia nei tuoi colleghi</li>
+  <li>Niente politica, niente burocrazia (sono ridicoli in un garage)</li>
+  <li>Solo il cliente definisce un lavoro ben fatto</li>
+  <li>Le idee radicali non sono idee cattive</li>
+  <li>Inventa modi diversi di lavorare</li>
+  <li>Fai un progresso ogni giorno</li>
+  <li>Sii convinto che insieme si può fare qualsiasi cosa</li>
+  <li>Inventa</li>
+</ol>]]></content><author><name></name></author><category term="post" /><category term="makers" /><summary type="html"><![CDATA[Google Analytics]]></summary></entry><entry><title type="html">Google Analytics per Jekyll</title><link href="http://localhost:4000/google-analytics/" rel="alternate" type="text/html" title="Google Analytics per Jekyll" /><published>2019-02-13T00:00:00+01:00</published><updated>2019-02-13T00:00:00+01:00</updated><id>http://localhost:4000/google-analytics</id><content type="html" xml:base="http://localhost:4000/google-analytics/"><![CDATA[<h1 id="google-analytics-per-jekyll"><strong>Google Analytics per Jekyll</strong></h1>
+
+<p>Questa guida non riguarda come creare un account google analytics o il suo funzionamento ma solo come integrarlo in un sito in Jekyll</p>
+
+<p>Dopo aver ricevuto da google il <strong>Tracking Code ID</strong> possiamo procedere come segue</p>
+
+<p>Prima di tutto crea un file chiamato <code class="language-plaintext highlighter-rouge">google-analytics.html</code> e incolla lo script che trovi in questa pagina <a href="https://github.com/francescolv/francescolv.github.io/blob/master/_includes/google-analytics.html">google_analytics</a></p>
+
+<p>Inserisci nel file <code class="language-plaintext highlighter-rouge">config.yml</code> questo parametro</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">#Google Analytics
+
+google_analytics: UA--XXXXXXXX-X</code></pre></figure>
+
+<p>Google raccomanda di inserire il codice per il tracciamento nella sezione di <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>, quidi apriamo il file <code class="language-plaintext highlighter-rouge">head.html</code> che normalmente si trova dentro la directory <code class="language-plaintext highlighter-rouge">include</code> e incolla appena prima del tag &lt;/head&gt; questo codice che trovi nel mio <a href="">repository</a></p>
+
+<p>E questo è tutto!</p>]]></content><author><name></name></author><category term="Howto" /><category term="post" /><category term="google" /><summary type="html"><![CDATA[Google Analytics]]></summary></entry><entry><title type="html">[Scratch 3] &amp;amp; Micro:bit</title><link href="http://localhost:4000/Scratch-Microbit/" rel="alternate" type="text/html" title="[Scratch 3] &amp;amp; Micro:bit" /><published>2019-01-25T00:00:00+01:00</published><updated>2019-01-25T00:00:00+01:00</updated><id>http://localhost:4000/Scratch-Microbit</id><content type="html" xml:base="http://localhost:4000/Scratch-Microbit/"><![CDATA[<h1 id="scratch-3--microbit"><strong>[Scratch 3] &amp; Micro:bit</strong></h1>
+<div class="pull-right">
+  <p><img src="/assets/img/scratch/scratch_microbit_400.png" alt="Scratch 3 &amp; Micro:bit" /></p>
+</div>
+
+<p><strong>Introduzione</strong></p>
+
+<p>Una delle maggiori novità introdotte in <a href="https://scratch.mit.edu/">Scratch 3</a> è la possibilità di interagire in pochi click con la scheda <a href="https://www.microbit.org/">Micro:bit</a></p>
+
+<p>Per chi non lo sapesse Micro:bit è un progetto della BBC e tecnicamente è un <strong>microcontrollore</strong>, un <strong>sistema embedded</strong> dotato di un processore ARM Cortex-M0, misura 4x5 cm, dispone di accelerometro e magnetometro, connettività USB e Bluetooth, display composto da 25 LED in una matrice 5x5, due tasti programmabili. Può essere alimentato via USB o da batteria esterna. È inoltre dotato di un connettore slot da 23 pin, cinque dei quali (di maggiori dimensioni) pensati per essere utilizzati anche con clip a coccodrillo o connettori a banana da 4 mm.</p>
+
+<p><img src="/assets/img/microbit.png" alt="img" /></p>
+
+<p>Anche se sembra complicato, per la programmazione è veramente semplice, e soprattutto è una scheda a basso costo (circa 25,00 euro su Amazon) e ben si adatta per i progetti di coding per le Scuole per sperimentazioni sulla creazione di giochi, robot, strumenti musicali, oggetti indossabili e molto altro.</p>
+
+<p><img src="/assets/img/microbit-editor.png" alt="img" /></p>
+
+<p>Seguendo questo tutorial <a href="https://scratch.mit.edu/microbit">https://scratch.mit.edu/microbit</a> è facile collegare il Micro:bit a Scratch</p>
+
+<ul>
+  <li>verificare che il bluetooth del proprio PC sia attivo</li>
+  <li>installare Scratch Link sul proprio PC</li>
+  <li>trasferire Scratch micro:bit .HEX sulla propria schedina</li>
+</ul>
+
+<p>e il gioco è fatto!</p>
+
+<p>Partendo dai tutorial per la programmazione per Micro:bit con MakeCode Editor ho convertito gli script per Scratch 3</p>
+
+<p><strong>Countdown con Micro:bit</strong>
+<img src="/assets/img/scratch/countdown_microbit.png" alt="img" /></p>
+
+<p><strong>Timer con Micro:bit</strong>
+<img src="/assets/img/scratch/timer_microbit.png" alt="img" /></p>
+
+<p><strong>Materiale a supporto</strong></p>
+
+<p><a href="/assets/scratch/countdown_microbit.sb3">Countdown con Micro:bit .sb3</a></p>
+
+<p><a href="/assets/scratch/time_microbit.sb3">Timer.sb3</a></p>
+
+<p><a href="https://projects.raspberrypi.org/en/projects?hardware%5B%5D=microbit">Progetti su Raspberry py Foundation per Micro:bit</a></p>]]></content><author><name></name></author><category term="scratch3" /><category term="coding" /><category term="stem" /><category term="microbit" /><summary type="html"><![CDATA[[Scratch 3] & Micro:bit]]></summary></entry><entry><title type="html">Nuova Sessione sul Coding</title><link href="http://localhost:4000/coding-session/" rel="alternate" type="text/html" title="Nuova Sessione sul Coding" /><published>2019-01-23T00:00:00+01:00</published><updated>2019-01-23T00:00:00+01:00</updated><id>http://localhost:4000/coding-session</id><content type="html" xml:base="http://localhost:4000/coding-session/"><![CDATA[<h1 id="nuovo-anno-e-nuova-sessione"><strong>Nuovo Anno e Nuova Sessione</strong></h1>
+<p>Coming soon</p>]]></content><author><name></name></author><category term="post" /><category term="news" /><summary type="html"><![CDATA[Coding]]></summary></entry><entry><title type="html">[Progetto #3] Homebrewing</title><link href="http://localhost:4000/homebrewing/" rel="alternate" type="text/html" title="[Progetto #3] Homebrewing" /><published>2019-01-23T00:00:00+01:00</published><updated>2019-01-23T00:00:00+01:00</updated><id>http://localhost:4000/homebrewing</id><content type="html" xml:base="http://localhost:4000/homebrewing/"><![CDATA[<h1 id="la-birra-a-casa"><strong>La Birra a casa</strong></h1>
+<p>Coming soon</p>]]></content><author><name></name></author><category term="hobby" /><category term="birra" /><summary type="html"><![CDATA[Homebrewing - La Birra a casa]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/homebrewing/home.png" /><media:content medium="image" url="http://localhost:4000/assets/img/homebrewing/home.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

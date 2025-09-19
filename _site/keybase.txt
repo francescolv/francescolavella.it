@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/kireime
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://francescolavella.it
+  * I am kireime (https://keybase.io/kireime) on keybase.
+  * I have a public key ASCU9XpFiWbAbXjTjVy5VM5CPDg23l08CwWpsISccFLL_go
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120fb3eec68ef865a499fd90d260319683b8f3f817e3dfc5ba0adac38cc3bb848e00a",
+      "host": "keybase.io",
+      "kid": "012094f57a458966c06d78d38d5cb954ce423c3836de5d3c0b05a9b0849c7052cbfe0a",
+      "uid": "92ce087bd6480994ead3cd04a872fb19",
+      "username": "kireime"
+    },
+    "merkle_root": {
+      "ctime": 1549274067,
+      "hash": "abcea8ed6f0c788ec2e22c10c950128fe25b4f89cddf65b529a89af731bb3b11f9910b792596f82a7aee5f78937977a90db0e90eeff9066d1a4ece71933e28bc",
+      "hash_meta": "af1355cac6ffc7a239db3daff5894384993ee74778650ce08a195852c79fe4fa",
+      "seqno": 4691931
+    },
+    "service": {
+      "entropy": "FIeL/nfW56WrJ540TBtcsAPC",
+      "hostname": "francescolavella.it",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "2.13.2"
+  },
+  "ctime": 1549274091,
+  "expire_in": 504576000,
+  "prev": "2e9311a3c3c65e59a00184bfe458ae64ee623ab12d5f594037baa0a5ad5a1885",
+  "seqno": 48,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEglPV6RYlmwG14041cuVTOQjw4Nt5dPAsFqbCEnHBSy/4Kp3BheWxvYWTESpcCMMQgLpMRo8PGXlmgAYS/5FiuZO5iOrEtX1lAN7qgpa1aGIXEINuWNwE4mB3a3hxL2R7Ya1y7MSBLeH1zrO3m/FVyjZmaAgHCo3NpZ8RAxOtucI+NI6OARsxhhIk9GISNNQTRB49y87wrryTkrR1GklPOZYHsR4jHmMEH3/JdnZdNPdMrvFRp7o6N3j8vAahzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIEu34/1/TyI98F54jMQ2Ksu+RcggmP0p63mAczSTFLcSo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/kireime
+
+==================================================================
