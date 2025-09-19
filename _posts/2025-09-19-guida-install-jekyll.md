@@ -179,6 +179,20 @@ il build “nativo” di GitHub Pages non supporta Jekyll 4.4 (al momento GitHub
 Per usare Jekyll 4.4 devi costruire il sito con GitHub Actions e pubblicare l’output di _site
 
 
+**DNS Github page**
+A records,
+
+    185.199.108.153
+    185.199.109.153
+    185.199.110.153
+    185.199.111.153
+
+AAAA records
+
+    2606:50c0:8000::153
+    2606:50c0:8001::153
+    2606:50c0:8002::153
+    2606:50c0:8003::153
 
 
 **Applicativi aggiuntivi che possono tornare utili**

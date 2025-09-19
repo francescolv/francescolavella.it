@@ -18,5 +18,9 @@ group :jekyll_plugins do
   gem "jekyll-feed"
   gem "jekyll-sitemap"
   gem "jekyll-gist"
-  gem "jekyll-gallery-generator"
+end
+
+group :gallery do
+  gem "jekyll-gallery-generator", "~> 1.2"
+  gem "rmagick", "~> 4.1"
 end

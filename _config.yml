@@ -72,6 +72,7 @@ plugins:
   - jekyll-gallery-generator
   - jekyll-youtube
   - jekyll-analytics
+  - jekyll-seo-tag
 
 jekyll-mentions:
   base_url: https://github.com

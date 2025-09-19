@@ -27,25 +27,20 @@ jobs:
           ruby-version: '3.4'
           bundler-cache: true
 
-      # 👉 rmagick richiede le librerie/dev di ImageMagick sul runner
-      - name: Install ImageMagick (dev)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            imagemagick \
-            libmagickwand-dev \
-            libmagickcore-dev \
-            pkg-config
-
-      - name: Install gems
+      # 👉 NON installiamo il gruppo :gallery in CI
+      - name: Install gems (without :gallery)
         run: |
           bundle lock --add-platform x86_64-linux
+          bundle config set without 'gallery'   # <- chiave
           bundle install --jobs 4 --retry 3
 
-      - name: Build site with Jekyll
+      - name: Build site with Jekyll (CI config)
         env:
           JEKYLL_ENV: production
-        run: bundle exec jekyll build --trace
+        run: |
+          bundle exec jekyll build \
+            --config _config.yml,_config.ci.yml \
+            --trace
 
       - name: Sanity check artifact
         run: |

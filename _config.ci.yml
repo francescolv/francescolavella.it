@@ -1,0 +1,13 @@
+# _config.ci.yml
+# Sovrascrive la lista dei plugin in CI: NIENTE galleria qui.
+plugins:
+  - jekyll-mentions
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-youtube
+  - jekyll-analytics
+  - jekyll-seo-tag
+# Se non usi questi, elimina le righe corrispondenti.
+
+
