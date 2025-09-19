@@ -1,17 +1,15 @@
-name: Deploy Jekyll 4.4 to GitHub Pages
+name: Deploy Jekyll 4.4 (Ruby 3.4) to GitHub Pages
 
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
 
-# Permessi richiesti da Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Evita deploy sovrapposti
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -23,21 +21,32 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Ruby
+      - name: Setup Ruby 3.4
         uses: ruby/setup-ruby@v1
         with:
-          # Versione consigliata e stabile per Jekyll 4.4
           ruby-version: '3.4'
-          bundler-cache: true  # cache automatico di bundle install
+          bundler-cache: true
+
+      # 👉 rmagick richiede le librerie/dev di ImageMagick sul runner
+      - name: Install ImageMagick (dev)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            imagemagick \
+            libmagickwand-dev \
+            libmagickcore-dev \
+            pkg-config
 
       - name: Install gems
-        run: bundle install --jobs 4 --retry 3
+        run: |
+          bundle lock --add-platform x86_64-linux
+          bundle install --jobs 4 --retry 3
 
       - name: Build site with Jekyll
         env:
           JEKYLL_ENV: production
         run: bundle exec jekyll build --trace
-      
+
       - name: Sanity check artifact
         run: |
           test -f _site/index.html || (echo "index.html missing" && exit 1)
