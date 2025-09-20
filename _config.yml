@@ -6,7 +6,7 @@ picture:        "assets/img/profile.png"
 locale:         it_IT
 
 url: "https://francescolv.github.io"
-baseurl: ""    # attenzione allo slash iniziale
+baseurl: "/francescolavella.it"    # attenzione allo slash iniziale
 
 # Jekyll
 permalink:      /:title/
