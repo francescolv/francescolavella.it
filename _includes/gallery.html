@@ -1,0 +1,49 @@
+{% assign g_dir = include.dir | default: '' %}
+{% assign g_cols = include.cols | default: 3 %}
+{% assign g_width = include.thumb_width | default: 400 %}
+
+{% if g_dir == '' %}
+  <p style="color:#c00">[gallery] Missing required param: <code>dir</code></p>
+{% else %}
+  <style>
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat({{ g_cols }}, minmax(0, 1fr));
+    }
+    .gallery-grid a {
+      display: block; border-radius: 0.75rem; overflow: hidden;
+      box-shadow: 0 1px 6px rgba(0,0,0,.06);
+      transition: transform .15s ease, box-shadow .15s ease;
+      background: #fff;
+    }
+    .gallery-grid a:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.08); }
+    .gallery-grid img { display:block; width:100%; height:auto; }
+    @media (max-width: 768px) { .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 420px) { .gallery-grid { grid-template-columns: 1fr; } }
+  </style>
+
+  {% comment %}
+    Seleziona i file statici la cui path contiene la dir indicata.
+    Esempio: include.dir="photos/serra" → matcher "/photos/serra/"
+  {% endcomment %}
+  {% assign base_path = '/' | append: g_dir | append: '/' %}
+  {% assign files = site.static_files | where_exp: "f", "f.path contains base_path" %}
+
+  {% if files == empty %}
+    <p>Nessuna immagine trovata in <code>{{ g_dir }}</code>.</p>
+  {% else %}
+    <div class="gallery-grid">
+      {% for image in files %}
+        {% assign ext = image.extname | downcase %}
+        {% if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.gif' or ext == '.webp' %}
+          <a href="{{ image.path | relative_url }}" target="_blank" rel="noopener">
+            <img src="{{ image.path | relative_url }}"
+                 alt="{{ image.name | escape }}"
+                 width="{{ g_width }}" loading="lazy" decoding="async">
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endif %}

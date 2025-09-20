@@ -233,5 +233,8 @@ void flash() {
 [Scarica lo schema in fritzing](/assets/img/serra/Serra_domotizzata.fzz)
 
 ## **Gallery**
-[Guarda la raccolta fotografica](/photos/serra/)
+[Guarda la raccolta fotografica](/galleria/serra/)
 
+Oppure anteprima inline:
+
+{% raw %}{% include gallery.html dir="photos/serra" cols="3" thumb_width="300" %}{% endraw %}
