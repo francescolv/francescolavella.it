@@ -1,5 +1,5 @@
 # Override solo per il build su CI (GitHub Actions)
-url: "https://francescolv.github.io"
+url: "https://www.francescolavella.it"  # user page = dominio personalizzato
 baseurl: ""         # user page = vuoto
 lsi: false
 incremental: false

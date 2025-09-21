@@ -5,8 +5,8 @@ description:    "su di me e altre storie"
 picture:        "assets/img/profile.png"
 locale:         it_IT
 
-url: "https://francescolv.github.io"
-baseurl: "/francescolavella.it"    # attenzione allo slash iniziale
+url: "https://www.francescolavella.it" # senza slash finale!
+baseurl: ""    # attenzione allo slash iniziale
 
 # Jekyll
 permalink:      /:title/

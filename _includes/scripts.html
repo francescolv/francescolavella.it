@@ -29,3 +29,77 @@ $(document).ready(function(){
   })();
 </script>
 {% endif %}
+
+<!-- Gallery -->
+<script>
+  // Chiudi lightbox con ESC
+  document.addEventListener('keyup', function(e) {
+    if (e.key === "Escape" && window.location.hash.match(/^#lb-/)) {
+      history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
+  });
+
+  // Chiudi cliccando sullo sfondo (non sull'immagine)
+  document.addEventListener('click', function(e) {
+    var target = e.target;
+    if (target.classList && target.classList.contains('lightbox')) {
+      e.preventDefault();
+      history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
+  });
+</script>
+<script>
+(function(){
+  var lightbox, img, currentIndex, images = [];
+
+  function buildLightbox() {
+    lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+      <span class="close">&times;</span>
+      <img src="" alt="">
+      <div class="controls">
+        <span class="arrow prev">&#10094;</span>
+        <span class="arrow next">&#10095;</span>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+    img = lightbox.querySelector('img');
+
+    // close
+    lightbox.querySelector('.close').onclick = close;
+    lightbox.onclick = e => { if(e.target === lightbox) close(); };
+    // arrows
+    lightbox.querySelector('.prev').onclick = prev;
+    lightbox.querySelector('.next').onclick = next;
+    // esc/keyboard
+    document.addEventListener('keyup', e => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'ArrowRight') next();
+    });
+  }
+
+  function open(i) {
+    currentIndex = i;
+    img.src = images[i].href;
+    lightbox.classList.add('active');
+  }
+  function close() { lightbox.classList.remove('active'); }
+  function prev() { if (currentIndex > 0) open(currentIndex-1); }
+  function next() { if (currentIndex < images.length-1) open(currentIndex+1); }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    buildLightbox();
+    images = Array.from(document.querySelectorAll('.gallery-item'));
+    images.forEach((a, i) => {
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        open(i);
+      });
+    });
+  });
+})();
+</script>
+

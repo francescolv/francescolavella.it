@@ -6,59 +6,39 @@
     <script type="text/javascript">
       $(function() {
         i = 0;
-        $('.menuAc').css({
-          'color': 'rgba(52, 152, 219, 1)'
-        });
+        $('.menuAc').css({'color': 'rgba(52, 152, 219, 1)'});
         $('.menuAc').click(function(){
           $(this).next('.menuMobil').animate({width:'toggle'},350);
           if (i%2==0) {
-            $('.footer').css({
-              'filter'         : 'blur(5px)'
-            });
-            $('.yazilar').css({
-              'filter'         : 'blur(5px)'
-            });
-            $('.ust').css({
-              'filter'         : 'blur(5px)'
-            });
-            $('ul.menu').css({
-              'animation-duration': '0.1s'
-            });
+            $('.footer, .yazilar, .ust').css({'filter':'blur(5px)'});
+            $('ul.menu').css({'animation-duration': '0.1s'});
+            i++;
+          } else {
+            $('.footer, .yazilar, .ust').css({'filter':'blur(0px)'});
             i++;
           }
-          else {
-            $('.footer').css({
-              'filter'         : 'blur(0px)'
-            });
-            $('.yazilar').css({
-              'filter'         : 'blur(0px)'
-            });
-            $('.ust').css({
-              'filter'         : 'blur(0px)'
-            });
-            i++;
-          }
-
         });
       });
     </script>
+
     <div class="menuAc">
       <i class="fa fa-bars" aria-hidden="true"></i>
     </div>
     <div class="menuMobil">
       {% include nav-home.html %}
     </div>
+
     <div class="ust">
       <div class="ortalaAna">
         <div class="baslikAna">
           {{ site.title }}
         </div>
-
         <div class="pc">
           {% include nav.html %}
         </div>
       </div>
     </div>
+
     <div class="ortalaAna">
       <div class="yazilar">
         <div class="yazi">
@@ -70,11 +50,26 @@
           </div>
           <hr>
           <div class="content">
-            {{ content }}
+            {{ content | liquify }}
           </div>
+
+          {%- comment -%}
+            Opzionale: se vuoi che, oltre agli include inline, a fine post
+            compaia automaticamente una galleria indicata nel front matter:
+            (metti in un post: gallery_dir, gallery_cols, gallery_thumb)
+          {%- endcomment -%}
+          {% if page.gallery_dir %}
+            <hr>
+            <h3 id="gallery">Gallery</h3>
+            {% include gallery.html
+               dir=page.gallery_dir
+               cols=page.gallery_cols
+               thumb_width=page.gallery_thumb %}
+          {% endif %}
         </div>
       </div>
     </div>
+
     {% include disqus_comments.html %}
     {% include footer.html %}
   </body>
