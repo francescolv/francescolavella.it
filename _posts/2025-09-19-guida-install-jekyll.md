@@ -194,10 +194,23 @@ AAAA records
     2606:50c0:8002::153
     2606:50c0:8003::153
 
+Nel mio caso specifico:
+
+Valore: @   Tipo: A  Valore: 185.199.108.153
+Valore: @   Tipo: A  Valore: 185.199.109.153
+Valore: @   Tipo: A  Valore: 185.199.110.153
+Valore: @   Tipo: A  Valore: 185.199.111.153
+
+Valore: www Tipo: CNAME Valore: francescolv.github.io
+
+Ricordi di forzare nel pannello di ghithub HTTPS
+
 
 **Applicativi aggiuntivi che possono tornare utili**
 
     sudo apt-get install libmagickwand-dev
+
+    Github Page Actions non digerisce la gallery con questo metodo, quindi ho riscritto completamente la Gallery utilizzando solo HTML/CSS senza plugin esterni
 
 **Licenza d'uso**
 [© CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/)
