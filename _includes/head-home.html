@@ -19,7 +19,12 @@
     <!-- Favicons -->
     {% include favicon.html %}
     <!-- Feed -->
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}{{ "/feed.xml" }}" />
+
+    <!-- Font Awesome (self-hosted) -->
+<link rel="stylesheet" href="{{ '/assets/css/vendor/fontawesome.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/vendor/brands.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/vendor/solid.css' | relative_url }}"><!-- togli se non usi icone solid -->
+
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="{{ site.url }}/assets/css/main.css">
 {% include cookieconsent.html %}

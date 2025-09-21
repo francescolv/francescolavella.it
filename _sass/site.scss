@@ -1,3 +1,7 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+
 //@extend-elements
 %extend_1 {
 	font-size: 12px;
@@ -877,3 +881,67 @@ ul.menu {
 		display: none;
 	}
 }
+/* --- Social icons — theme friendly --- */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin: 16px 0 28px;
+}
+
+.social-links .author-social {
+  /* pill tonda */
+  --size: 42px;
+  width: var(--size);
+  height: var(--size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9999px;
+  background: $background-color;      /* il grigio/bianco del tuo tema */
+  color: $main-color;                  /* il rosso del tuo tema */
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease, border-color .15s ease;
+}
+
+.social-links .author-social i {
+  font-size: 1.2rem;                   /* dimensione icona */
+  line-height: 1;
+}
+
+/* Hover: riempi del tuo rosso e inverti il colore dell’icona */
+.social-links .author-social:hover,
+.social-links .author-social:focus {
+  background: $main-color;
+  color: $background-color;
+  border-color: rgba(0,0,0,.12);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,.15);
+}
+
+/* Stato attivo/click */
+.social-links .author-social:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0,0,0,.12);
+}
+
+/* Variante scura su sfondi chiari (opzionale) */
+.has-light-bg .social-links .author-social {
+  background: #fff;
+}
+
+/* Responsive: leggermente più piccoli sotto i 420px */
+@media (max-width: 420px) {
+  .social-links .author-social { --size: 38px; }
+  .social-links .author-social i { font-size: 1.1rem; }
+}
+.social-links .author-social {
+  background: $main-color;
+  color: $background-color;
+}
+.social-links .author-social:hover { filter: brightness(1.05); }

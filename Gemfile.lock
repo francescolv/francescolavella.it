@@ -203,6 +203,7 @@ DEPENDENCIES
   jekyll-feed
   jekyll-gist
   jekyll-mentions
+  jekyll-sass-converter (~> 3.0)
   jekyll-seo-tag
   jekyll-sitemap
   jekyll-youtube

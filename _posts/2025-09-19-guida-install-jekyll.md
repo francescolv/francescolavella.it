@@ -196,12 +196,11 @@ AAAA records
 
 Nel mio caso specifico:
 
-Valore: @   Tipo: A  Valore: 185.199.108.153
-Valore: @   Tipo: A  Valore: 185.199.109.153
-Valore: @   Tipo: A  Valore: 185.199.110.153
-Valore: @   Tipo: A  Valore: 185.199.111.153
-
-Valore: www Tipo: CNAME Valore: francescolv.github.io
+    Valore: @   Tipo: A     Valore: 185.199.108.153
+    Valore: @   Tipo: A     Valore: 185.199.109.153
+    Valore: @   Tipo: A     Valore: 185.199.110.153
+    Valore: @   Tipo: A     Valore: 185.199.111.153
+    Valore: www Tipo: CNAME Valore: francescolv.github.io
 
 Ricordi di forzare nel pannello di ghithub HTTPS
 
@@ -210,7 +209,7 @@ Ricordi di forzare nel pannello di ghithub HTTPS
 
     sudo apt-get install libmagickwand-dev
 
-    Github Page Actions non digerisce la gallery con questo metodo, quindi ho riscritto completamente la Gallery utilizzando solo HTML/CSS senza plugin esterni
+Github Page Actions non digerisce la gallery con questo metodo, quindi ho riscritto completamente la Gallery utilizzando solo HTML/CSS senza plugin esterni
 
 **Licenza d'uso**
 [© CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/)

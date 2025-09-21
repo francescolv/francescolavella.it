@@ -1,28 +1,40 @@
 <head>
-    <meta charset="UTF-8">
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
-    <meta name=viewport content="width=device-width, initial-scale=1">
-    <title>{% if page.title %}{{ page.title }} &#8211; {% endif %}{{ site.title }}</title>
-    {% if page.excerpt %}<meta name="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% else %}<meta name="description" content="{{ site.description }}">{% endif %}
-    <meta name="keywords" content="{{ page.tags | join: ', ' }}">
-    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
-    {% include open-graph.html %}
-    {% if site.google.verify %}
-    <!-- Webmaster Tools verfication -->
-    <meta name="google-site-verification" content="{{ site.google.verify }}">{% endif %}
-    {% if site.bing-verify %}<meta name="msvalidate.01" content="{{ site.bing-verify }}">{% endif %}
-    <!-- Handheld -->
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Favicons -->
-    {% include favicon.html %}
-    <!-- Feed -->
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}{{ "/feed.xml" }}" />
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ site.url }}/assets/css/main.css">
-{% include cookieconsent.html %}
-<!-- google analytics -->
-{% include google-analytics.html %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% if page.title %}{{ page.title }} &#8211; {% endif %}{{ site.title }}</title>
+  {% if page.excerpt %}
+    <meta name="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">
+  {% else %}
+    <meta name="description" content="{{ site.description }}">
+  {% endif %}
+  <meta name="keywords" content="{{ page.tags | join: ', ' }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+  {% include open-graph.html %}
+
+  {% if site.google.verify %}
+    <meta name="google-site-verification" content="{{ site.google.verify }}">
+  {% endif %}
+  {% if site.bing-verify %}
+    <meta name="msvalidate.01" content="{{ site.bing-verify }}">
+  {% endif %}
+
+  <!-- Favicons -->
+  {% include favicon.html %}
+
+  <!-- Feed -->
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}" />
+
+  <!-- Font Awesome (self-hosted) -->
+<link rel="stylesheet" href="{{ '/assets/css/vendor/fontawesome.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/vendor/brands.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/vendor/solid.css' | relative_url }}"><!-- togli se non usi icone solid -->
+
+  <!-- CSS principale -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+  {% include cookieconsent.html %}
+  {% include google-analytics.html %}
 </head>

@@ -4,6 +4,7 @@
 
  gem "bundler"
  gem "jekyll", "~> 4.4"
+ gem "jekyll-sass-converter", "~> 3.0"
  gem "csv"
  gem "faraday-retry"
  gem "observer"

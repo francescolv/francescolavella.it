@@ -234,7 +234,3 @@ void flash() {
 
 ## **Gallery**
 [Guarda la raccolta fotografica](/galleria/serra/)
-
-<div class="gallery-inline">
-{% include gallery.html dir="photos/serra" cols="3" thumb_width="300" id="serra" %}
-</div>
