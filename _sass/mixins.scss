@@ -1,86 +1,55 @@
 @use "variables" as *;
 @use "sass:math";
 
-// UTILITY MIXINS
-// --------------------------------------------------
-
-// For clearing floats
+/* clearfix */
 @mixin clearfix {
-  *zoom: 1;
-  &:before,
-  &:after {
-    display: table;
-    content: "";
-    line-height: 0;
-  }
-  &:after {
-    clear: both;
-  }
+  &::before, &::after { content: ""; display: table; }
+  &::after { clear: both; }
 }
 
-// Center-align a block level element
+/* center block */
 @mixin center-block {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-// ROUND CORNERS
-// --------------------------------------------------
-
-@mixin border-radius($topright: 0, $bottomright: 0, $bottomleft: 0, $topleft: 0) {
-  border-top-right-radius: $topright;
-  border-bottom-right-radius: $bottomright;
-  border-bottom-left-radius: $bottomleft;
-  border-top-left-radius: $topleft;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
+/* border radius helpers */
+@mixin border-radius($tr:0, $br:0, $bl:0, $tl:0) {
+  border-top-right-radius:    $tr;
+  border-bottom-right-radius: $br;
+  border-bottom-left-radius:  $bl;
+  border-top-left-radius:     $tl;
   background-clip: padding-box;
 }
 
-@mixin rounded($radius: 4px) {
-  border-radius: $radius;
-}
+@mixin rounded($r:4px){ border-radius: $r; }
 
-// TYPOGRAPHY
-// --------------------------------------------------
-
-// Full-fat vertical rhythm
+/* typography */
 @mixin font-size($size) {
-  font-size: $size; // fallback px se necessario
-  font-size: math.div($size, $doc-font-size) * 1rem;
-  line-height: math.div($doc-line-height, $size);
-  margin-bottom: $doc-line-height;
-  margin-bottom: math.div($doc-line-height, $doc-font-size) * 1rem;
+  font-size: $size; /* px fallback se passi px */
+  font-size: calc(#{$size} / #{$doc-font-size} * 1rem);
+  line-height: #{math.div($doc-line-height, $size)};
+  margin-bottom: calc(#{$doc-line-height} / #{$doc-font-size} * 1rem);
 }
 
-// Just the REMs
 @mixin font-rem($size) {
-  font-size: $size; // fallback px se necessario
-  font-size: math.div($size, $doc-font-size) * 1rem;
+  font-size: $size;
+  font-size: calc(#{$size} / #{$doc-font-size} * 1rem);
 }
 
-// Just font-size and line-height
 @mixin font($size) {
-  font-size: $size; // fallback px se necessario
-  font-size: math.div($size, $doc-font-size) * 1rem;
-  line-height: math.div($doc-line-height, $size);
+  font-size: $size;
+  font-size: calc(#{$size} / #{$doc-font-size} * 1rem);
+  line-height: #{math.div($doc-line-height, $size)};
 }
 
-// GRADIENTS
-// --------------------------------------------------
-@mixin horizontal($startColor: $color_gallery, $midColor: $color_stack, $endColor: $color_gallery) {
-  background-color: $endColor;
-  background-image: linear-gradient(to right, $startColor, $midColor, $endColor);
-  background-repeat: repeat-x;
+/* gradient minimale (moderno) */
+@mixin horizontal($start, $mid, $end) {
+  background: linear-gradient(90deg, $start, $mid, $end);
 }
 
-// TRANSITIONS
-// --------------------------------------------------
-@mixin transition($transition) {
-  -webkit-transition: $transition;
-  -moz-transition: $transition;
-  -ms-transition: $transition;
-  -o-transition: $transition;
-  transition: $transition;
+/* transitions */
+@mixin transition($t) {
+  transition: $t;
 }

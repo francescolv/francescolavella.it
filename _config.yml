@@ -44,6 +44,10 @@ plugins:
 jekyll-mentions:
   base_url: https://github.com
 
-# Exclude list
+defaults:
+  - scope:
+      path: "assets/css/main.scss"
+    values:
+      sitemap: false
 
   

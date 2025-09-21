@@ -1,7 +1,15 @@
 ---
-sitemap: false
+# Jekyll front matter: obbligatorio per la compilazione
 ---
+@use "variables" as *;
+@use "mixins" as *;
+@use "normalize";
+@use "syntax";
 
-// Partials
-@use "sass:color";
-@use "all";
+/* stile del tema */
+@use "site";
+@use "elements";
+@use "gallery";
+
+/* stampa */
+@use "print";

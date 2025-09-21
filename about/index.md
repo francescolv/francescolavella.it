@@ -84,6 +84,4 @@ Attività esercitata: Consulenza aziendale, Progettazione per i corsi di formazi
 
 @ facebook: francesco.lavella
 
-@ twitter: francescolv
-
 @ keybase: kireime

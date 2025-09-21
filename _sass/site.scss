@@ -945,3 +945,45 @@ ul.menu {
   color: $background-color;
 }
 .social-links .author-social:hover { filter: brightness(1.05); }
+
+/* Utility per immagini affiancate al testo */
+.pull-right {
+  float: right;
+  /* margine: sopra 0, destra 0, sotto 1rem, sinistra 1rem */
+  margin: 0 0 1rem 1rem;
+  max-width: 40%;           /* regola la larghezza a piacere (30–50%) */
+}
+.pull-right img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Variante speculare, se mai servisse */
+.pull-left {
+  float: left;
+  margin: 0 1rem 1rem 0;
+  max-width: 40%;
+}
+.pull-left img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Clearfix per i contenitori che includono elementi flottanti */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Mobile: niente float, immagine intera */
+@media (max-width: 700px) {
+  .pull-right,
+  .pull-left {
+    float: none;
+    max-width: 100%;
+    margin: 0 0 1rem 0;
+  }
+}
