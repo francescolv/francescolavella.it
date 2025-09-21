@@ -4,7 +4,6 @@ _site/
 .sass-cache/
 .cache/
 # Ruby/Bundler
-vendor/
 .bundle/
 # OS / editor
 .DS_Store
