@@ -22,6 +22,9 @@ sass:
   sass_dir: _sass
   style: compressed
 
+# Google Analytics
+google_analytics: UA-134462764-1
+
 # Social
 email: francescolv@gmail.com
 facebook: francescolv
