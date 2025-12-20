@@ -1,15 +1,12 @@
 ---
 layout: post
-title: "Guida Installazione da zero Jekyll su WSL"
-date: 2025-09-19
-excerpt: "Guida Installazione da zero Jekyll su WSL"
-tags: [post, jekyll]
+title: "Costruire il Media Server Casalingo Perfetto con Fedora Linux"
+date: 2025-12-20
+excerpt: "Costruire il Media Server Casalingo Perfetto con Fedora Linux"
+tags: [post, linux, fedora]
 ---
-**Costruire il NAS e Media Server Casalingo Perfetto con Fedora Linux: La mia Guida Completa**
+Dall'installazione di Fedora alla gestione di OneDrive e Jellyfin con Podman. Ecco come ho trasformato il mio nuovo PC (ricondizionato) in una centrale multimediale sicura ed efficiente
 ===
-##
-Dall'installazione di Fedora alla gestione di OneDrive e Jellyfin con Podman. Ecco come ho trasformato il mio nuovo PC (ricondizionato) in una centrale multimediale sicura ed efficiente.
-
 **Introduzione**
 
 Di recente ho deciso di prendere il controllo completo dei miei dati e del mio intrattenimento domestico. L'obiettivo? Creare un sistema che fosse stabile come una roccia, flessibile e capace di gestire tutto: Workstation per ufficio, backup su OneDrive, streaming di film in 4K, recuperando vecchi hard disk da sistemi RAID precedenti.
