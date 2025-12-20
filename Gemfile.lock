@@ -211,8 +211,5 @@ DEPENDENCIES
   observer
   webrick (~> 1.8)
 
-RUBY VERSION
-   ruby 3.4.6p54
-
 BUNDLED WITH
    2.7.2
