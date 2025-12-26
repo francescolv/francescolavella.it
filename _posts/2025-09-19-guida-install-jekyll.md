@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Guida Installazione da zero Jekyll su WSL"
+title: "Installazione Jekyll su WSL"
 date: 2025-09-19
-excerpt: "Guida Installazione da zero Jekyll su WSL"
+excerpt: "Installazione Jekyll su WSL"
 tags: [post, jekyll]
 ---
 **Guida Passo Passo per installare Jekyll e gestire il nostro sito**

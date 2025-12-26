@@ -305,8 +305,10 @@ body {
   }
 
   li {
-    height: 20px;
+    height: auto; /* Lascia che l'altezza si adatti */
+    min-height: 20px; /* Altezza minima opzionale */
     margin: 5px;
+    margin-bottom: 10px; /* Aggiungi spazio extra sotto */
     list-style: circle;
     color: $background-color;
 
@@ -739,7 +741,9 @@ ul.menu {
   float: left;
   display: block;
   list-style: none;
-  height: 50px;
+  height: auto; /* Cambia da 50px a auto */
+  min-height: 50px;
+  overflow: visible; /* Assicurati che il contenuto non venga tagliato */
 	opacity: 0;
 	animation-delay: 1s;
   animation: resim 2s forwards;
@@ -985,5 +989,21 @@ ul.menu {
     float: none;
     max-width: 100%;
     margin: 0 0 1rem 0;
+  }
+}
+/* --- FIX PER MOBILE LAYOUT --- */
+@media (max-width: 1000px) {
+  /* Corregge i bottoni/link che vanno a capo */
+  .btn, .post-list li, .widget li {
+    height: auto !important;
+    white-space: normal !important; /* Permette al testo di andare a capo */
+    display: block;
+    margin-bottom: 15px; /* Spazio tra i box */
+  }
+
+  /* Aggiusta il padding interno dei bottoni */
+  .btn {
+    padding: 12px 15px !important;
+    line-height: 1.4 !important;
   }
 }

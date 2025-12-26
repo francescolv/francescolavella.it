@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "JARVIS 2.0: Costruire il Server Domestico con Fedora Linux"
+title: "JARVIS 2.0: Server Domestico"
 date: 2025-12-24
-excerpt: "JARVIS 2.0: Costruire il Server Domestico con Fedora Linux"
+excerpt: "JARVIS 2.0: Server Domestico"
 tags: [post, linux, fedora]
 ---
 

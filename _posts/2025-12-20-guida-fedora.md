@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Costruire il Media Server Casalingo Perfetto con Fedora Linux"
+title: "Media Server con Fedora"
 date: 2025-12-20
-excerpt: "Costruire il Media Server Casalingo Perfetto con Fedora Linux"
+excerpt: "Media Server con Fedora"
 tags: [post, linux, fedora]
 ---
 Dall'installazione di Fedora alla gestione di OneDrive e Jellyfin con Podman. Ecco come ho trasformato il mio nuovo PC (ricondizionato) in una centrale multimediale sicura ed efficiente
