@@ -14,7 +14,6 @@
 
  group :jekyll_plugins do
    gem "jekyll-youtube"
-   gem "jekyll-analytics"
    gem "jekyll-mentions"
    gem "jekyll-feed"
    gem "jekyll-sitemap"
