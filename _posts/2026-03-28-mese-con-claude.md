@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Un mese con Claude: cronaca di una collaborazione tecnica"
+title: "Un mese con Claude"
 date: 2026-03-28
 excerpt: "Rete LAN, digital signage, Android, GNOME, Jekyll: cinque progetti in poche settimane. Un resoconto onesto su cosa significa avere un AI come collaboratore tecnico reale."
 description: "Rete LAN, digital signage, Android, GNOME, Jekyll: cinque progetti in poche settimane. Un resoconto onesto su cosa significa avere un AI come collaboratore tecnico reale."
@@ -16,7 +16,7 @@ Usare un AI come collaboratore tecnico non significa delegare. Significa avere s
 
 ---
 
-## BLINK: la rete LAN che non era mai stata fatta per bene
+## BLINK: la rete LAN aziendale da veri professionisti
 
 Nella mia nuova sede Blink era necessario installare una "Rete con la R maiuscola". Ho deciso di progettarlo dall'inizio: MikroTik come router centrale, uno switch managed, subnet separate, DHCP con assegnazioni statiche per i dispositivi fissi, e WireGuard per la VPN.
 
@@ -40,7 +40,7 @@ L'idea era semplice: uno schermo remoto che mostra contenuti gestiti da una dash
 
 **SELinux su Fedora.** Questo merita una nota a parte. Il deploy su Fedora con SELinux abilitato è stato un muro. Apache non riusciva a leggere certi file, scrivere in certi path, fare reverse proxy verso socket — tutto silenzioso, senza errori chiari nel log Apache. La diagnostica con `audit2why` e `ausearch` è diventata una routine quotidiana. Claude conosceva bene il contesto SELinux e ha aiutato a identificare i contesti corretti senza ricorrere a `setenforce 0`, che sarebbe stata la resa.
 
-**Cosa non ha funzionato subito:** il player HTML5 con fallback offline. La logica era: se il server è irraggiungibile, usa l'ultima playlist scaricata. Sembrava lineare. In pratica, la gestione del Service Worker, il caching delle risorse media e la sincronizzazione allo startup hanno richiesto molto più lavoro del previsto. Qualcosa funzionava nel browser di sviluppo e si rompeva sul Raspberry Pi. Debugging remoto su hardware embedded con risorse limitate è una categoria di dolore a sé.
+**Cosa non ha funzionato subito:** il player HTML5 con fallback offline. La logica era: se il server è irraggiungibile, usa l'ultima playlist scaricata. Sembrava lineare. In pratica, la gestione del Service Worker, il caching delle risorse media e la sincronizzazione allo startup hanno richiesto molto più lavoro del previsto. Qualcosa funzionava nel browser di sviluppo e si rompeva sul Server. Debugging remoto su hardware embedded con risorse limitate è una categoria di dolore a sé.
 
 **Cosa ho imparato:** zero framework non significa zero struttura. Significa che la struttura devi darla tu, e se non la dai con attenzione, il codice diventa rapidamente ingestibile. Ho sviluppato convenzioni molto precise per routing, response format e gestione degli errori — cose che un framework impone di default. Farlo manualmente ti fa capire perché esistono i framework.
 
@@ -62,7 +62,7 @@ Quello che ho imparato: Android ha una quantità enorme di API, molte deprecate 
 
 Avevo KDE come desktop e mi trovavo bene, ma ho deciso di passare a GNOME che lo trovo molto più moderno. Non una migrazione drammatica, ma qualcosa che ha richiesto attenzione perché avevo configurazioni specifiche, estensioni, shortcut personalizzati.
 
-Il punto interessante è stato capire cosa sopravvive a una migrazione GNOME-to-GNOME e cosa invece è legato alla versione specifica. Alcuni file di configurazione in `~/.config/` si trasferiscono direttamente; altri (in particolare le estensioni) dipendono dalla versione di GNOME Shell e possono rompere silenziosamente.
+Il punto interessante è stato capire cosa sopravvive a una migrazione KDE-to-GNOME e cosa invece è legato alla versione specifica. Alcuni file di configurazione in `~/.config/` si trasferiscono direttamente; altri (in particolare le estensioni) dipendono dalla versione di GNOME Shell e possono rompere silenziosamente.
 
 Non è stato il progetto più complicato del mese, ma è stato un buon esempio di come Claude aiuta anche nei task di routine: non facendo le cose al posto tuo, ma ricordandoti i pezzi che avresti dimenticato (le keybindings custom, la configurazione di mimeapps, le impostazioni GTK).
 
