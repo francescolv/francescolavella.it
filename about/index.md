@@ -78,10 +78,10 @@ Attività esercitata: Consulenza aziendale, Progettazione per i corsi di formazi
 <h1>Come cercarmi</h1>
 @ HTTPS: www.francescolavella.it
 
-@ PGP: 1ADC 575B 01AE 0D97
+@ Proton: francescolv@proton.me
+
+@ PGP: ecf295bb0496b49a4f65552f2f4b298a191d8394
 
 @ github: francescolv
 
-@ facebook: francesco.lavella
-
-@ keybase: kireime
+@ linkedin: francescolv
