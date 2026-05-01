@@ -14,47 +14,55 @@
 	background-color: $color_12;
 	border-radius: 3px;
 }
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { overflow-x: hidden; }
+
+img, picture, video {
+  max-width: 100%;
+  height: auto;
+}
+
 body {
   background: $background-color;
   margin: 0px;
+  font-family: $main-font;
 }
 
-.bisey {
-  background: red;
-}
-
-.orta {
+.home-hero {
   background: $main-color;
   height: 230px;
   width: auto;
   margin-top: 10px;
   box-shadow: 0px 0px 20px 2px rgba(71, 71, 71, 1);
-  animation-name: orta;
+  animation-name: home-hero;
   animation-duration: 1.2s;
   animation-fill-mode:forwards;
 }
 
-.baslik {
-  font-size: 60px;
+.home-title {
+  font-size: clamp(2.25rem, 8vw, 60px);
   text-align: center;
   font-family: $title-font;
   text-shadow: 1px 1px 5px #000;
   color: #FFF;
   margin-top: 130px;
 	opacity: 0;
-  animation-name: baslik;
+  animation-name: home-title;
 	animation-delay: 1.2s;
   animation-duration: 2s;
 	animation-fill-mode: forwards;
 }
 
-.ortala {
+.home-wrap {
   margin-left: auto;
   margin-right: auto;
-  width: 800px;
+  width: 100%;
+  max-width: 800px;
+  padding-inline: 1rem;
 }
 
-.resim {
+.home-photo {
   margin-top: 30px;
   width: 170px;
   height: 170px;
@@ -63,7 +71,7 @@ body {
   background: $background-color;
   box-shadow: 0px 0px 20px 2px rgba(82, 82, 82, 1) inset;
 	opacity: 0;
-	animation: baslik;
+	animation: home-title;
 	animation-delay: 1s;
 	animation-duration: 2s;
 	animation-fill-mode: forwards;
@@ -75,7 +83,7 @@ body {
 }
 
 
-.aciklamalar {
+.home-desc {
   font-family: $title-font;
   margin-left: 50;
   float: left;
@@ -84,12 +92,12 @@ body {
   color: $thrid-color;
 	opacity: 0;
 	animation-delay: 1s;
-  animation-name: baslik;
+  animation-name: home-title;
 	animation-duration: 2s;
 	animation-fill-mode: forwards;
 }
 
-@keyframes baslik {
+@keyframes home-title {
   0% {
     opacity: 0;
   }
@@ -99,7 +107,7 @@ body {
   }
 }
 
-@keyframes orta {
+@keyframes home-hero {
   0% {
     height: 0px;
     margin-top: 125px;
@@ -111,7 +119,7 @@ body {
   }
 }
 
-@keyframes resim {
+@keyframes home-photo {
   0% {
     opacity: 0;
   }
@@ -124,12 +132,12 @@ body {
     opacity: 1;
   }
 }
-.ustr {
+.post-header {
 	width: auto;
 	height: 60px;
 }
-.ust {
-  animation-name: ustegel;
+.top-strip {
+  animation-name: strip-slide;
   animation-duration: 1s;
   animation-fill-mode: forwards;
   background-color: $main-color;
@@ -139,7 +147,7 @@ body {
   box-shadow: 0px 0px 10px 1px rgba(82, 82, 82, .6);
 }
 
-@keyframes ustegel {
+@keyframes strip-slide {
   0% {
     height: 200px;
     margin-top: 120px;
@@ -151,24 +159,26 @@ body {
   }
 }
 
-.baslikAna {
-  font-size: 50px;
+.page-title {
+  font-size: clamp(1.75rem, 6vw, 50px);
   color: $background-color;
   text-shadow: rgba(255, 255, 255, .2) 3px 2px 3px;
   float: left;
   font-family: $title-font;
-  animation-name: baslik;
+  animation-name: home-title;
   animation-duration: 1.2s;
   animation-fill-mode: forwards;
 }
 
-.ortalaAna {
-  width: 1000px;
+.page-wrap {
+  width: 100%;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
+  padding-inline: 1rem;
 }
 
-.yazi, .yaziUzun {
+.post, .post-long {
   margin-right: 5px;
 	margin-left: 5px;
   margin-top: 10px;
@@ -176,22 +186,23 @@ body {
   border-radius: 3px;
   box-shadow: 0px 0px 10px 1px rgba(82, 82, 82, 0.1);
   font-family: $main-font;
-  animation-name: baslik;
+  animation-name: home-title;
 	animation-delay: 0.7s;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 	opacity: 0;
 }
 
-.programcerceve {
-  width: 990px;
+.project-frame {
+  width: 100%;
+  max-width: 990px;
   margin-right: 10px;
   margin-top: 10px;
   background-color: $main-color;
   border-radius: 3px;
   box-shadow: 0px 0px 10px 1px rgba(82, 82, 82, .6);
   float: left;
-  animation-name: baslik;
+  animation-name: home-title;
   animation-duration: 2s;
   animation-fill-mode: forwards;
 
@@ -204,7 +215,7 @@ body {
   }
 }
 
-.ustr h2 {
+.post-header h2 {
   margin-left: 15px;
   color: $background-color;
   float: left;
@@ -212,7 +223,7 @@ body {
   margin-bottom: 5px;
 }
 
-.yaziUzun h2 {
+.post-long h2 {
   margin-left: 15px;
   color: #d35400;
   float: left;
@@ -220,7 +231,7 @@ body {
   margin-bottom: 0px;
 }
 
-.ustr h2 a, .yaziUzun h2 a {
+.post-header h2 a, .post-long h2 a {
   text-decoration: none;
   color: $background-color;
   float: left;
@@ -229,13 +240,11 @@ body {
   transition-delay: 0s;
 }
 
-.ustr h2 a:hover, .yaziUzun h2 a:hover {
+.post-header h2 a:hover, .post-long h2 a:hover {
   color: $thrid-color;
 }
 
-@import url("https://fonts.googleapis.com/css?family=Roboto+Slab");
-
-.ustr p, .yaziUzun p {
+.post-header p, .post-long p {
   padding: 15px;
   font-size: 15px;
   color: rgba(82, 82, 82, .8);
@@ -243,17 +252,18 @@ body {
   font-family: $main-font;
 }
 
-.yazilar {
+.posts-list {
   float: left;
-  width: 1000px;
+  width: 100%;
+  max-width: 1000px;
 }
 
-.programim {
-  float: center;
-  width: 1000px;
+.projects-wrap {
+  width: 100%;
+  max-width: 1000px;
 }
 
-.yazibilgisi {
+.post-meta {
   color: rgba(81, 81, 81, .4);
   font-size: 12px;
   float: right;
@@ -262,7 +272,7 @@ body {
   font-family: $title-font;
 }
 
-.yaziBilgisiUzun {
+.post-meta-long {
   margin-bottom: 0px;
   color: rgba(81, 81, 81, .4);
   font-size: 12px;
@@ -272,7 +282,7 @@ body {
   font-family: $title-font;
 }
 
-.yazi hr, .yaziUzun hr {
+.post hr, .post-long hr {
 	margin: 0px;
   float: left;
   width: 95%;
@@ -289,7 +299,7 @@ body {
   box-shadow: 0px 0px 10px 1px rgba(82, 82, 82, .6);
   float: right;
   text-align: center;
-  animation-name: sagx;
+  animation-name: sidebar-slide-x;
   animation-duration: 1.2s;
   animation-fill-mode: forwards;
 
@@ -299,7 +309,7 @@ body {
     font-family: $title-font;
     margin-top: 15px;
     margin-bottom: 15px;
-    animation-name: baslik;
+    animation-name: home-title;
     animation-duration: 1.2s;
     animation-fill-mode: forwards;
   }
@@ -339,19 +349,19 @@ body {
   }
 }
 
-.arama {
+.search {
   background-color: #fff;
   float: right;
   width: 280px;
   border-radius: 6px;
   margin-top: 10px;
   height: 40px;
-  animation-name: sag;
+  animation-name: sidebar-right;
   animation-duration: 1.2s;
   animation-fill-mode: forwards;
 }
 
-.aramaKutusu {
+.search-input {
   color: #d35400;
   font-size: 16px;
   background-color: rgba(0, 0, 0, .01);
@@ -366,29 +376,29 @@ body {
   padding: 4px;
 }
 
-.aramaButonu {
+.search-button {
   background-color: transparent;
   border: 0px;
   margin-top: 5px;
   outline: none;
   float: right;
-  animation-name: baslik;
+  animation-name: home-title;
   animation-duration: 1.5s;
   animation-fill-mode: forwards;
 }
 
-ul.menuAna {
-  font-size: 25px;
+ul.menu-main {
+  font-size: clamp(1rem, 2.5vw, 25px);
   margin-top: 15px;
   margin-left: 20px;
   float: left;
   display: block;
   list-style: none;
   height: 50px;
-  animation-name: baslik;
+  animation-name: home-title;
   animation-duration: 1.2s;
   animation-fill-mode: forwards;
-  width: 570px;
+  max-width: 570px;
   li {
     float: left;
   }
@@ -419,7 +429,7 @@ ul.menuAna {
   }
 }
 
-.secili {
+.selected {
   border-bottom: 5px solid $thrid-color;
 
   &:hover {
@@ -432,7 +442,7 @@ ul.menuAna {
   color: rgba(0, 0, 0, .8);
 }
 
-.sag {
+.sidebar-right {
   float: left;
   width: 280px;
 }
@@ -444,14 +454,14 @@ ul.menuAna {
   font-family: $title-font;
   background: $main-color;
   box-shadow: 0px 0px 10px 2px rgba(82, 82, 82, 1);
-  animation-name: ft;
+  animation-name: footer-fade;
 	animation-delay: 1.2s;
   animation-duration: 1.5s;
   animation-fill-mode: forwards;
 	opacity: 0;
 }
 
-@keyframes ft {
+@keyframes footer-fade {
   0% {
     opacity: 0;
   }
@@ -465,7 +475,7 @@ ul.menuAna {
   font-size: 18px;
   margin-top: 20px;
   color: $background-color;
-  animation-name: baslik;
+  animation-name: home-title;
   animation-duration: 1.2s;
   animation-fill-mode: forwards;
 	text-align: center;
@@ -476,7 +486,7 @@ ul.menuAna {
 	}
 }
 
-@keyframes sag {
+@keyframes sidebar-right {
   0% {
     opacity: 0;
     width: 0px;
@@ -493,7 +503,7 @@ ul.menuAna {
   }
 }
 
-@keyframes sagx {
+@keyframes sidebar-slide-x {
   0% {
     opacity: 0;
     width: 0px;
@@ -543,27 +553,27 @@ ul.menuAna {
   color: #000;
 }
 
-.programlar {
+.projects-list {
   margin-top: 40px;
 }
 
-.program {
+.project-card {
   background-color: $main-color;
   width: 220px;
   margin: 10px;
   box-shadow: 0px 0px 10px 1px rgba(82, 82, 82, .6);
   float: left;
-  animation-name: baslik;
+  animation-name: home-title;
   animation-duration: 1.2s;
   animation-fill-mode: forwards;
-  animation-name: baslik;
+  animation-name: home-title;
 	opacity: 0;
 	animation-delay: 1s;
   animation-duration: 1.6s;
   animation-fill-mode: forwards;
 }
 
-.urunResmi {
+.product-image {
   height: 150px;
   width: 180px;
   margin-right: auto;
@@ -575,7 +585,7 @@ ul.menuAna {
 	}
 }
 
-.urunAdi {
+.product-name {
   text-align: center;
   font-size: 20px;
   display: block;
@@ -594,11 +604,11 @@ ul.menuAna {
 	}
 }
 
-.fiyatVeOs {
+.price-os {
   text-align: center;
 }
 
-.fiyat {
+.price {
   a {
     margin-left: 30px;
     display: inline-block;
@@ -618,39 +628,28 @@ ul.menuAna {
   }
 }
 
-.aciklamaUrun {
+.product-desc {
   padding: 5px;
   color: rgba(0, 0, 0, .9);
   font-size: 13px;
+  font-family: $main-font;
 }
 
-.windows {
-  background-image: url("http://alperenbozkurt.tk/img/Windows.png");
-  background-size: cover;
-  float: right;
-  margin-right: 10px;
-  border-radius: 3px;
-  height: 30px;
-  width: 30px;
-}
-
-/*Programlar.php Bitti
- *İletişim.php yapılmaya başlandı. */
-
-.iletisim {
+.contact {
   margin-top: 40px;
-  height: 450px;
-  width: 990px;
+  width: 100%;
+  max-width: 990px;
   box-shadow: 0px 0px 10px 1px rgba(82, 82, 82, .6);
   border-radius: 3px;
   background-color: $main-color;
-  animation-name: baslik;
+  animation-name: home-title;
   animation-duration: 1.3s;
   animation-fill-mode: forwards;
 }
 
-.hakkimda {
-  width: 990px;
+.about-me {
+  width: 100%;
+  max-width: 990px;
   float: left;
   font-size: 18px;
 
@@ -667,8 +666,9 @@ ul.menuAna {
   }
 }
 
-.iletisimBilgileri {
-  width: 445px;
+.contact-info {
+  width: 100%;
+  max-width: 445px;
   float: left;
   padding: 10px;
   text-align: center;
@@ -691,7 +691,7 @@ ul.menuAna {
 
 .social-links {
 	text-align: center;
-  animation-name: baslik;
+  animation-name: home-title;
 	opacity: 0;
 	animation-delay: 1s;
   animation-duration: 2s;
@@ -711,7 +711,7 @@ ul.menuAna {
 		}
 	}
 }
-.sosyal {
+.social-alt {
 	.fa {
 		margin-top: 10px !important;
 		color: $background-color !important;
@@ -735,7 +735,7 @@ ul.menuAna {
 
 }
 ul.menu {
-  font-size: 28px;
+  font-size: clamp(1.25rem, 3vw, 28px);
   margin-top: 75px;
   margin-left: 20px;
   float: left;
@@ -746,7 +746,7 @@ ul.menu {
   overflow: visible; /* Assicurati che il contenuto non venga tagliato */
 	opacity: 0;
 	animation-delay: 1s;
-  animation: resim 2s forwards;
+  animation: home-photo 2s forwards;
 
   li {
     float: left;
@@ -774,20 +774,20 @@ ul.menu {
   }
 }
 
-.menuAc{
+.menu-toggle{
 	display: none;
 }
-.menuMobil {
+.menu-drawer {
 	display: none;
 }
 @media (max-width: 1000px) {
-	.menuAc{
+	.menu-toggle{
 		font-size: 28px;
 	  float: left;
 	  list-style: none;
 		opacity: 0;
 		animation-delay: 1s;
-	  animation: resim 2s forwards;
+	  animation: home-photo 2s forwards;
 		display: block;
 		position: absolute;
 		top: 0px;
@@ -802,7 +802,7 @@ ul.menu {
 		  text-shadow: 1px 1px 4px rgba(81, 81, 81, 1) !important;
 		}
 	}
-	.menuMobil {
+	.menu-drawer {
 		display: none;
 		position: absolute;
 		background-color: red;
@@ -845,33 +845,33 @@ ul.menu {
 	    }
 	  }
 	}
-	.ortala{
+	.home-wrap{
 		width: 90%;
 		padding-top: 15px;
 	}
-	.ortalaAna{
+	.page-wrap{
 		width: 100%;
 	}
-	.yazilar{
+	.posts-list{
 		width: 100%;
 	}
-	.yazibilgisi{
+	.post-meta{
 		display: none;
 	}
-	.resim{
+	.home-photo{
 		float: none;
 		margin-top: 0px;
 		margin-left: auto;
 		margin-right: auto;
 	}
-	.aciklamalar {
+	.home-desc {
 		text-align: center;
 		float: none;
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 5px;
 	}
-	@keyframes orta {
+	@keyframes home-hero {
 	  0% {
 	    height: 0px;
 	    margin-top: 125px;
@@ -881,7 +881,7 @@ ul.menu {
 	    margin-top: 10px;
 	  }
 	}
-	.pc {
+	.desktop-only {
 		display: none;
 	}
 }
@@ -1005,5 +1005,114 @@ ul.menu {
   .btn {
     padding: 12px 15px !important;
     line-height: 1.4 !important;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — tablet ≤ 768px
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* Sidebar (.widget, .search, .sidebar-right) collassano sotto il contenuto */
+  .widget,
+  .search,
+  .sidebar-right {
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .widget hr { width: auto; }
+  .search-input { width: calc(100% - 60px); }
+
+  /* Cards progetto: 2 colonne flex */
+  .projects-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .project-card {
+    float: none;
+    width: calc(50% - 12px);
+    margin: 0;
+  }
+  .product-image,
+  .product-image img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    aspect-ratio: 6 / 5;
+    object-fit: cover;
+  }
+
+  /* Ust (header strip) — niente più altezza fissa */
+  .top-strip { height: auto; padding-bottom: 12px; }
+
+  /* post/post-long: padding interno meno aggressivo */
+  .post, .post-long { padding: 0 4px; }
+  .content { padding: 16px; }
+
+  /* Home avatar centrato anche su tablet */
+  .home-photo { float: none; margin-inline: auto; }
+  .home-desc { float: none; text-align: center; margin-inline: auto; }
+
+  /* Lobster heading subtitle home */
+  .home-title { margin-top: clamp(40px, 14vw, 130px); }
+
+  /* Menu mobile drawer più ampio del 200px fisso */
+  .menu-drawer { width: min(80vw, 280px); }
+
+  /* about ridotto */
+  .contact { height: auto; }
+}
+
+/* ============================================================
+   RESPONSIVE — mobile ≤ 480px
+   ============================================================ */
+@media (max-width: 480px) {
+
+  body { font-size: 14px; }
+
+  /* Cards progetto: una sola colonna */
+  .project-card { width: 100%; }
+
+  /* Padding ridotti */
+  .content { padding: 12px; }
+  .post .post-header { padding-inline: 8px; }
+
+  /* post-meta inline sotto al titolo, non float right */
+  .post-meta {
+    float: none;
+    line-height: 1.4;
+    margin-right: 0;
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* Ust (header strip) — titolo + nav stack vertical */
+  .top-strip .page-title,
+  .top-strip .desktop-only { float: none; text-align: center; }
+
+  /* about/contact: padding ridotti */
+  .about-me { font-size: 16px; }
+  .about-me h2 { padding-left: 12px; padding-top: 12px; }
+  .contact-info { padding: 8px; }
+
+  /* Footer copy a colonna */
+  .copy img { float: none; display: inline-block; vertical-align: middle; }
+
+  /* Riduci animazioni che usano shadow/blur per gentilezza CPU */
+  .home-hero { box-shadow: 0px 0px 8px 1px rgba(71, 71, 71, .8); }
+}
+
+/* Rispetta preferenze utente */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
   }
 }

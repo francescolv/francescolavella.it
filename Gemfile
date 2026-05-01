@@ -13,12 +13,10 @@
  gem "kramdown-parser-gfm"
 
  group :jekyll_plugins do
-   gem "jekyll-youtube"
    gem "jekyll-mentions"
    gem "jekyll-feed"
    gem "jekyll-sitemap"
    gem "jekyll-gist"
-   gem "jekyll-seo-tag"
 
    # gem "jekyll-gallery-generator"
  end

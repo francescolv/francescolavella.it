@@ -2,7 +2,7 @@
 title:          francesco la vella
 bio:            "pensieri sparsi"
 description:    "su di me e altre storie"
-picture:        "assets/img/profile.png"
+picture:        "assets/img/profile-og.jpg"
 locale:         it_IT
 
 url: "https://www.francescolavella.it" # senza slash finale!
@@ -40,8 +40,6 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-gist
-  - jekyll-youtube
-  - jekyll-seo-tag
 
 jekyll-mentions:
   base_url: https://github.com

@@ -3,12 +3,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.title }}</title>
+  <title>{% if page.url != "/" and page.title %}{{ page.title }} – {% endif %}{{ site.title }}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}{% else %}{{ site.description }}{% endif %}">
-  <meta name="keywords" content="{{ page.tags | join: ', ' }}">
+  {% if page.tags and page.tags.size > 0 %}<meta name="keywords" content="{{ page.tags | join: ', ' }}">{% endif %}
 
-  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
   {% include open-graph.html %}
+
+  {% if site.google.verify %}<meta name="google-site-verification" content="{{ site.google.verify }}">{% endif %}
+  {% if site.bing-verify %}<meta name="msvalidate.01" content="{{ site.bing-verify }}">{% endif %}
 
   <!-- Favicons -->
   {% include favicon.html %}
@@ -16,26 +19,24 @@
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}"/>
 
-  <!-- Preload Font Awesome webfonts (migliora UX) -->
+  <!-- Preload Font Awesome webfonts -->
   <link rel="preload" href="{{ '/assets/webfonts/fa-solid-900.woff2'  | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{{ '/assets/webfonts/fa-brands-400.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 
-  <!-- Google Fonts (se vuoi Roboto Slab) -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Sostituisci la famiglia se ne usi un’altra -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@900&family=Lobster&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome (self-hosted) - CARICA SEMPRE PRIMA del tuo main.css -->
+  <!-- Font Awesome (self-hosted) — prima del CSS principale -->
   <link rel="stylesheet" href="{{ '/assets/css/vendor/fontawesome.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/vendor/brands.css'     | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/vendor/solid.css'      | relative_url }}"><!-- opzionale -->
+  <link rel="stylesheet" href="{{ '/assets/css/vendor/solid.css'      | relative_url }}">
 
-  <!-- Il tuo CSS compilato da Jekyll -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
-  <script src="{{ '/assets/js/lightbox.js' | relative_url }}"></script>
-  
+  <script defer src="{{ '/assets/js/lightbox.js' | relative_url }}"></script>
+
   {% include cookieconsent.html %}
   {% include google-analytics.html %}
 </head>

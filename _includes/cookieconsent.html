@@ -1,18 +1,50 @@
-<!-- cookie -->
-<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
-<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.css">
+<script defer src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.umd.js"></script>
 <script>
-window.addEventListener("load", function(){
-window.cookieconsent.initialise({
-  "palette": {
-    "popup": {
-      "background": "#000"
-    },
-    "button": {
-      "background": "transparent",
-      "text": "#f1d600",
-      "border": "#f1d600"
-    }
-  }
-})});
+  window.addEventListener('load', function () {
+    if (typeof CookieConsent === 'undefined') return;
+    CookieConsent.run({
+      guiOptions: {
+        consentModal:    { layout: 'box', position: 'bottom right' },
+        preferencesModal:{ layout: 'box' }
+      },
+      categories: {
+        necessary: { enabled: true, readOnly: true },
+        comments:  {}
+      },
+      language: {
+        default: 'it',
+        translations: {
+          it: {
+            consentModal: {
+              title: 'Cookie',
+              description: 'Questo sito usa solo cookie tecnici. Per visualizzare i commenti (Disqus) servono cookie opzionali: puoi accettarli o rifiutarli in qualsiasi momento.',
+              acceptAllBtn: 'Accetta tutto',
+              acceptNecessaryBtn: 'Solo necessari',
+              showPreferencesBtn: 'Preferenze'
+            },
+            preferencesModal: {
+              title: 'Preferenze cookie',
+              acceptAllBtn: 'Accetta tutto',
+              acceptNecessaryBtn: 'Solo necessari',
+              savePreferencesBtn: 'Salva preferenze',
+              closeIconLabel: 'Chiudi',
+              sections: [
+                {
+                  title: 'Cookie necessari',
+                  description: 'Indispensabili per il funzionamento del sito. Sempre attivi.',
+                  linkedCategory: 'necessary'
+                },
+                {
+                  title: 'Commenti (Disqus)',
+                  description: 'Caricati solo se vuoi leggere o scrivere commenti tramite Disqus. Disqus può impostare cookie di tracciamento.',
+                  linkedCategory: 'comments'
+                }
+              ]
+            }
+          }
+        }
+      }
+    });
+  });
 </script>

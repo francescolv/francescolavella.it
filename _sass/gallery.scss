@@ -149,3 +149,30 @@
   outline: 2px solid rgba(255,255,255,.9);
   outline-offset: 2px;
 }
+
+/* ========== GALLERIES INDEX (cards) ========== */
+.galleries-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  @media (max-width: 960px) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (max-width: 520px) { grid-template-columns: 1fr; }
+}
+
+.gallery-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .06);
+  transition: transform .15s ease, box-shadow .15s ease;
+
+  &:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0, 0, 0, .08); }
+  img { width: 100%; height: auto; display: block; }
+  .meta { padding: .75rem 1rem; }
+  .ttl  { font-weight: 600; margin: 0 0 .25rem; }
+  .desc { color: #666; margin: 0; font-size: .95rem; }
+}
