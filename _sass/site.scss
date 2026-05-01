@@ -1055,6 +1055,20 @@ ul.menu {
   .post, .post-long { padding: 0 4px; }
   .content { padding: 16px; }
 
+  /* post-header: niente altezza fissa, lascia respirare i titoli a capo
+     e contieni i float interni per non sforare nella card successiva */
+  .post-header {
+    height: auto;
+    min-height: 60px;
+    overflow: hidden;
+    padding-block: 8px;
+  }
+  .post-header h2 {
+    float: none;
+    line-height: 1.2;
+    margin: 8px 15px;
+  }
+
   /* Home avatar centrato anche su tablet */
   .home-photo { float: none; margin-inline: auto; }
   .home-desc { float: none; text-align: center; margin-inline: auto; }
@@ -1087,8 +1101,7 @@ ul.menu {
   .post-meta {
     float: none;
     line-height: 1.4;
-    margin-right: 0;
-    margin-top: 4px;
+    margin: 4px 15px 8px;
     display: block;
   }
 
