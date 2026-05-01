@@ -4,7 +4,6 @@ title: "Upgrade totale del sito con claude code"
 date: 2026-05-01
 excerpt: "Con Claude Code rilevati tanti bug e aggiornato mille cose senza scrivere direttamente una sola linea di codice"
 description: "Con Claude Code rilevati tanti bug e aggiornato mille cose senza scrivere direttamente una sola linea di codice"
-categories: [riflessioni]
 tags: [post, ai, jekyll, CSS]
 ---
 
