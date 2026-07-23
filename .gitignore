@@ -5,6 +5,7 @@ _site/
 .cache/
 # Ruby/Bundler
 .bundle/
+vendor/bundle/
 # OS / editor
 .DS_Store
 Thumbs.db
