@@ -22,16 +22,17 @@ Non è un prodotto destinato ad altri utenti: è un tool che uso esclusivamente 
 
 Il progetto è costruito attorno a [n8n](https://n8n.io), uno strumento di automazione a workflow open source che eseguo su un mio server. I workflow si collegano alla **Google Ads API** tramite OAuth 2.0, con il mio account Google come unico utente autorizzato.
 
-In pratica il workflow interroga periodicamente l'API per leggere le performance delle campagne, genera report che ricevo automaticamente, e in alcuni casi esegue modifiche puntuali (ad esempio pausare un annuncio sotto una certa soglia di rendimento) secondo regole che ho definito io.
+In pratica il workflow interroga periodicamente l'API per leggere le performance delle campagne, genera report che ricevo automaticamente, e in alcuni casi esegue modifiche puntuali (ad esempio pausare un annuncio sotto una certa soglia di rendimento) secondo regole che ho definito io. I dati settimanali estratti vengono inoltre scritti in un foglio Google Sheets personale, che uso come archivio e per costruire grafici di andamento.
 
 ## Quali dati richiedo e perché
 
-Per funzionare, l'app richiede l'autorizzazione OAuth allo scope Google `https://www.googleapis.com/auth/adwords`, che dà accesso in lettura e scrittura al mio account Google Ads. Mi serve per due motivi specifici:
+Per funzionare, l'app richiede l'autorizzazione OAuth ai seguenti scope Google:
 
-- **lettura**: recuperare le metriche di rendimento delle campagne (impression, click, spesa, conversioni) per generare i report periodici che ricevo automaticamente;
-- **scrittura**: applicare modifiche puntuali che ho definito io stesso, come la pausa di un annuncio quando scende sotto una soglia di rendimento prestabilita.
+- **`https://www.googleapis.com/auth/adwords`** — accesso in lettura e scrittura al mio account Google Ads. Mi serve per leggere le metriche di rendimento delle campagne (impression, click, spesa, conversioni) e per applicare modifiche puntuali che ho definito io stesso, come la pausa di un annuncio sotto una certa soglia di rendimento.
+- **`https://www.googleapis.com/auth/spreadsheets`** — accesso in lettura e scrittura ai fogli di calcolo Google Sheets. Mi serve per scrivere ogni settimana i dati estratti da Google Ads in un foglio personale che uso come archivio storico.
+- **`https://www.googleapis.com/auth/drive.file`** — accesso limitato ai soli file creati o aperti tramite questa app. Mi serve perché n8n, per scrivere su Google Sheets, deve poter individuare il foglio specifico che ho indicato.
 
-Non viene richiesto nessun altro scope Google (email, Drive, Calendar, ecc.) e non viene richiesto alcun accesso a dati di altri utenti: l'unico account collegato è il mio.
+Non viene richiesto alcun accesso a dati di altri utenti: l'unico account collegato è il mio.
 
 ## Dati e privacy
 
