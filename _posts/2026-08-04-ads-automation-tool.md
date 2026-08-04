@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Francesco La Vella – Ads Automation Tool"
+title: "Francesco La Vella Ads Tools"
 image: /assets/img/profile-300.jpg
 date: 2026-08-04
 excerpt: "Uno strumento personale che uso per automatizzare la gestione e il reporting delle mie campagne Google Ads."
@@ -14,7 +14,7 @@ tags:
 
 ## Cosa è
 
-**Francesco La Vella – Ads Automation Tool** è un progetto personale che ho costruito per automatizzare alcune operazioni ricorrenti sul mio account Google Ads: estrazione di report, controlli periodici sullo stato delle campagne e aggiornamento di alcuni parametri (budget, stato degli annunci) in base a regole che decido io.
+**Francesco La Vella Ads Tools** è un progetto personale che ho costruito per automatizzare alcune operazioni ricorrenti sul mio account Google Ads: estrazione di report, controlli periodici sullo stato delle campagne e aggiornamento di alcuni parametri (budget, stato degli annunci) in base a regole che decido io.
 
 Non è un prodotto destinato ad altri utenti: è un tool che uso esclusivamente per la gestione dei miei account pubblicitari personali.
 
