@@ -24,9 +24,20 @@ Il progetto è costruito attorno a [n8n](https://n8n.io), uno strumento di autom
 
 In pratica il workflow interroga periodicamente l'API per leggere le performance delle campagne, genera report che ricevo automaticamente, e in alcuni casi esegue modifiche puntuali (ad esempio pausare un annuncio sotto una certa soglia di rendimento) secondo regole che ho definito io.
 
+## Quali dati richiedo e perché
+
+Per funzionare, l'app richiede l'autorizzazione OAuth allo scope Google `https://www.googleapis.com/auth/adwords`, che dà accesso in lettura e scrittura al mio account Google Ads. Mi serve per due motivi specifici:
+
+- **lettura**: recuperare le metriche di rendimento delle campagne (impression, click, spesa, conversioni) per generare i report periodici che ricevo automaticamente;
+- **scrittura**: applicare modifiche puntuali che ho definito io stesso, come la pausa di un annuncio quando scende sotto una soglia di rendimento prestabilita.
+
+Non viene richiesto nessun altro scope Google (email, Drive, Calendar, ecc.) e non viene richiesto alcun accesso a dati di altri utenti: l'unico account collegato è il mio.
+
 ## Dati e privacy
 
-Lo strumento accede solo ai dati del mio account Google Ads, tramite lo scope `https://www.googleapis.com/auth/adwords`. Non raccoglie, non condivide e non elabora dati di terze parti: è un'automazione privata a uso personale, non un servizio pubblico.
+I dati letti dall'API restano tra il mio account Google Ads e il mio workflow n8n, eseguito su un server che gestisco personalmente. Non vengono raccolti, condivisi o ceduti a terzi, e non vengono usati per finalità diverse da quella descritta sopra.
+
+L'informativa completa sul trattamento dei dati è disponibile nella [Privacy Policy](/PrivacyPolicy/) del sito.
 
 ## Contatti
 
